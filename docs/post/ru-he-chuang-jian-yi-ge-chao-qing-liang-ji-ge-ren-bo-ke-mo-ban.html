@@ -11,11 +11,11 @@
     </script>
 <meta name="description" content="参照
 https://github.com/Meekdai/Gmeek
-。">
+https://www.bilibili.com/video/BV1GM4m1m7ZD/?spm_id_from=333.337.search-card.all.click&vd_source=3c2dec1cc6abaa7ac54e0888e5d841f0。">
 <meta property="og:title" content="如何创建一个超轻量级个人博客模板">
 <meta property="og:description" content="参照
 https://github.com/Meekdai/Gmeek
-。">
+https://www.bilibili.com/video/BV1GM4m1m7ZD/?spm_id_from=333.337.search-card.all.click&vd_source=3c2dec1cc6abaa7ac54e0888e5d841f0。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://Guo233333333.github.io/patrickguo.github.io/post/ru-he-chuang-jian-yi-ge-chao-qing-liang-ji-ge-ren-bo-ke-mo-ban.html">
 <meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
@@ -75,7 +75,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><p>参照<br>
-<a href="https://github.com/Meekdai/Gmeek">https://github.com/Meekdai/Gmeek</a></p></div>
+<a href="https://github.com/Meekdai/Gmeek">https://github.com/Meekdai/Gmeek</a><br>
+<a href="https://www.bilibili.com/video/BV1GM4m1m7ZD/?spm_id_from=333.337.search-card.all.click&amp;vd_source=3c2dec1cc6abaa7ac54e0888e5d841f0" rel="nofollow">https://www.bilibili.com/video/BV1GM4m1m7ZD/?spm_id_from=333.337.search-card.all.click&amp;vd_source=3c2dec1cc6abaa7ac54e0888e5d841f0</a></p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
@@ -135,7 +136,11 @@ console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5p
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
-
+cmButton=document.getElementById("cmButton");
+    span=document.createElement("span");
+    span.setAttribute("class","Counter");
+    span.innerHTML="1";
+    cmButton.appendChild(span);
 
 
 function openComments(){
