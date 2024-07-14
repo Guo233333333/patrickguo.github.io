@@ -1,0 +1,4 @@
+# 20240714
+[SwashbucklerDiary](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/Yu-Core/SwashbucklerDiary)：记录生活点滴的侠客日记。这个项目的作者因为喜欢写日记，所以开发了这款离线优先的日记应用。它拥有简洁清爽的界面，用户可以选择记录日记时的天气、心情和位置。除了支持 Web 在线使用外，还提供了 Android、Windows、iOS 和 macOS 客户端
+[SyncClipboard](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/Jeric-X/SyncClipboard)：跨平台的剪贴板同步工具。该项目可以轻松实现不同设备间剪贴板内容同步，支持文本、图片和文件。使用时可以选择自己部署服务端，或者使用支持 WebDAV 协议的网盘。
+[earthworm](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/cuixueshe/earthworm)：让你上瘾的英语学习网站。这是一个开源的在线学习英语网站，支持自托管和本地运行。它采用连词成句、循序渐进的方法帮你学习英语。通过不断地重复形成肌肉记忆，并结合游戏奖励和积分排名的方式，让背单词变得有趣且高效。
