@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="# 初识Git
+
+## 目录
+
+- [初识Git](#初识git)
+  - [目录](#目录)
+  - [1 前言](#1-前言)
+  - [2 使用场景](#2-使用场景)
+  - [3 从本地代码到远程仓库](#3-从本地代码到远程仓库)
+    - [3.1 前置准备](#31-前置准备)
+    - [3.2 创建仓库](#32-创建仓库)
+    - [3.3 下一步尝试](#33-下一步尝试)
+    - [3.4 推送至远程仓库](#34-推送至远程仓库)
+  - [4 从远程仓库到本地代码](#4-从远程仓库到本地代码)
+    - [4.1 第一次拉取](#41-第一次拉取)
+    - [4.2 同步远程仓库](#42-同步远程仓库)
+      - [4.2.1 Case 1: Fast forward](#421-case-1-fast-forward)
+      - [4.2.2 Case 2: Merge (No Conflict)](#422-case-2-merge-no-conflict)
+      - [4.2.3 Case 3: Merge (Conflict)](#423-case-3-merge-conflict)
+      - [4.2.4 Option: Rebase](#424-option-rebase)
+  - [5 合并分支](#5-合并分支)
+    - [5.1 合并前暂存未提交的修改](#51-合并前暂存未提交的修改)
+    - [5.2 合并单条commit](#52-合并单条commit)
+  - [6 “规范”的代码仓库其他建议](#6-规范的代码仓库其他建议)
+    - [6.1 Git配置](#61-git配置)
+    - [6.2 提交信息](#62-提交信息)
+    - [6.3 主分支保护](#63-主分支保护)
+    - [6.4 谨慎使用破坏性命令](#64-谨慎使用破坏性命令)
+    - [6.5 .gitignore](#65-gitignore)
+    - [6.6 .gitkeep](#66-gitkeep)
+
+## 1 前言
+
+本分享将包含的内容
+
+- Git基础命令
+- 本地仓库（Git）与远程仓库（Github）交互
+- 分支管理
+- Git的其他注意事项
+
+重点关注内容
+
+- `Pull`、`Merge`命令的使用
+- 分支管理
+
+## 2 使用场景
+
+为什么使用Git？
+
+- 规范的项目代码仓库管理
+- **代码版本管理和控制**
+- 跨设备代码同步
+- **团队协作开发**
+- 参与开源项目
+
+为什么不使用Git？
+
+- 不安全的命令操作导致不可逆的代码丢失风险
+- 需要一定的学习时间成本
+- 主要为非纯文本文件的项目（仓库体积膨胀、无法追踪改动）
+
+不适宜用Git管理版本的文件（非绝对）
+
+- 二进制文件（图片、视频、音频等）
+- Word、Excel
+- 超过100MB的文件
+
+## 3 从本地代码到远程仓库
+
+本小节主要讨论如何从一个本地的代码文件夹出发，建立本地的Git仓库，并将其推送到Github远程仓库。">
+<meta property="og:title" content="初识Git">
+<meta property="og:description" content="# 初识Git
+
+## 目录
+
+- [初识Git](#初识git)
+  - [目录](#目录)
+  - [1 前言](#1-前言)
+  - [2 使用场景](#2-使用场景)
+  - [3 从本地代码到远程仓库](#3-从本地代码到远程仓库)
+    - [3.1 前置准备](#31-前置准备)
+    - [3.2 创建仓库](#32-创建仓库)
+    - [3.3 下一步尝试](#33-下一步尝试)
+    - [3.4 推送至远程仓库](#34-推送至远程仓库)
+  - [4 从远程仓库到本地代码](#4-从远程仓库到本地代码)
+    - [4.1 第一次拉取](#41-第一次拉取)
+    - [4.2 同步远程仓库](#42-同步远程仓库)
+      - [4.2.1 Case 1: Fast forward](#421-case-1-fast-forward)
+      - [4.2.2 Case 2: Merge (No Conflict)](#422-case-2-merge-no-conflict)
+      - [4.2.3 Case 3: Merge (Conflict)](#423-case-3-merge-conflict)
+      - [4.2.4 Option: Rebase](#424-option-rebase)
+  - [5 合并分支](#5-合并分支)
+    - [5.1 合并前暂存未提交的修改](#51-合并前暂存未提交的修改)
+    - [5.2 合并单条commit](#52-合并单条commit)
+  - [6 “规范”的代码仓库其他建议](#6-规范的代码仓库其他建议)
+    - [6.1 Git配置](#61-git配置)
+    - [6.2 提交信息](#62-提交信息)
+    - [6.3 主分支保护](#63-主分支保护)
+    - [6.4 谨慎使用破坏性命令](#64-谨慎使用破坏性命令)
+    - [6.5 .gitignore](#65-gitignore)
+    - [6.6 .gitkeep](#66-gitkeep)
+
+## 1 前言
+
+本分享将包含的内容
+
+- Git基础命令
+- 本地仓库（Git）与远程仓库（Github）交互
+- 分支管理
+- Git的其他注意事项
+
+重点关注内容
+
+- `Pull`、`Merge`命令的使用
+- 分支管理
+
+## 2 使用场景
+
+为什么使用Git？
+
+- 规范的项目代码仓库管理
+- **代码版本管理和控制**
+- 跨设备代码同步
+- **团队协作开发**
+- 参与开源项目
+
+为什么不使用Git？
+
+- 不安全的命令操作导致不可逆的代码丢失风险
+- 需要一定的学习时间成本
+- 主要为非纯文本文件的项目（仓库体积膨胀、无法追踪改动）
+
+不适宜用Git管理版本的文件（非绝对）
+
+- 二进制文件（图片、视频、音频等）
+- Word、Excel
+- 超过100MB的文件
+
+## 3 从本地代码到远程仓库
+
+本小节主要讨论如何从一个本地的代码文件夹出发，建立本地的Git仓库，并将其推送到Github远程仓库。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://Guo233333333.github.io/patrickguo.github.io/post/chu-shi-Git.html">
+<meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
+<title>初识Git</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">初识Git</h1>
+<div class="title-right">
+    <a href="https://Guo233333333.github.io/patrickguo.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Guo233333333/patrickguo.github.io/issues/6" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>初识Git</h1>
+<h2>目录</h2>
+<ul>
+<li><a href="#%E5%88%9D%E8%AF%86git">初识Git</a>
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#1-%E5%89%8D%E8%A8%80">1 前言</a></li>
+<li><a href="#2-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">2 使用场景</a></li>
+<li><a href="#3-%E4%BB%8E%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93">3 从本地代码到远程仓库</a>
+<ul>
+<li><a href="#31-%E5%89%8D%E7%BD%AE%E5%87%86%E5%A4%87">3.1 前置准备</a></li>
+<li><a href="#32-%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93">3.2 创建仓库</a></li>
+<li><a href="#33-%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%B0%9D%E8%AF%95">3.3 下一步尝试</a></li>
+<li><a href="#34-%E6%8E%A8%E9%80%81%E8%87%B3%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93">3.4 推送至远程仓库</a></li>
+</ul>
+</li>
+<li><a href="#4-%E4%BB%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81">4 从远程仓库到本地代码</a>
+<ul>
+<li><a href="#41-%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8B%89%E5%8F%96">4.1 第一次拉取</a></li>
+<li><a href="#42-%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93">4.2 同步远程仓库</a>
+<ul>
+<li><a href="#421-case-1-fast-forward">4.2.1 Case 1: Fast forward</a></li>
+<li><a href="#422-case-2-merge-no-conflict">4.2.2 Case 2: Merge (No Conflict)</a></li>
+<li><a href="#423-case-3-merge-conflict">4.2.3 Case 3: Merge (Conflict)</a></li>
+<li><a href="#424-option-rebase">4.2.4 Option: Rebase</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#5-%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF">5 合并分支</a>
+<ul>
+<li><a href="#51-%E5%90%88%E5%B9%B6%E5%89%8D%E6%9A%82%E5%AD%98%E6%9C%AA%E6%8F%90%E4%BA%A4%E7%9A%84%E4%BF%AE%E6%94%B9">5.1 合并前暂存未提交的修改</a></li>
+<li><a href="#52-%E5%90%88%E5%B9%B6%E5%8D%95%E6%9D%A1commit">5.2 合并单条commit</a></li>
+</ul>
+</li>
+<li><a href="#6-%E8%A7%84%E8%8C%83%E7%9A%84%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E5%85%B6%E4%BB%96%E5%BB%BA%E8%AE%AE">6 “规范”的代码仓库其他建议</a>
+<ul>
+<li><a href="#61-git%E9%85%8D%E7%BD%AE">6.1 Git配置</a></li>
+<li><a href="#62-%E6%8F%90%E4%BA%A4%E4%BF%A1%E6%81%AF">6.2 提交信息</a></li>
+<li><a href="#63-%E4%B8%BB%E5%88%86%E6%94%AF%E4%BF%9D%E6%8A%A4">6.3 主分支保护</a></li>
+<li><a href="#64-%E8%B0%A8%E6%85%8E%E4%BD%BF%E7%94%A8%E7%A0%B4%E5%9D%8F%E6%80%A7%E5%91%BD%E4%BB%A4">6.4 谨慎使用破坏性命令</a></li>
+<li><a href="#65-gitignore">6.5 .gitignore</a></li>
+<li><a href="#66-gitkeep">6.6 .gitkeep</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>1 前言</h2>
+<p>本分享将包含的内容</p>
+<ul>
+<li>Git基础命令</li>
+<li>本地仓库（Git）与远程仓库（Github）交互</li>
+<li>分支管理</li>
+<li>Git的其他注意事项</li>
+</ul>
+<p>重点关注内容</p>
+<ul>
+<li><code class="notranslate">Pull</code>、<code class="notranslate">Merge</code>命令的使用</li>
+<li>分支管理</li>
+</ul>
+<h2>2 使用场景</h2>
+<p>为什么使用Git？</p>
+<ul>
+<li>规范的项目代码仓库管理</li>
+<li><strong>代码版本管理和控制</strong></li>
+<li>跨设备代码同步</li>
+<li><strong>团队协作开发</strong></li>
+<li>参与开源项目</li>
+</ul>
+<p>为什么不使用Git？</p>
+<ul>
+<li>不安全的命令操作导致不可逆的代码丢失风险</li>
+<li>需要一定的学习时间成本</li>
+<li>主要为非纯文本文件的项目（仓库体积膨胀、无法追踪改动）</li>
+</ul>
+<p>不适宜用Git管理版本的文件（非绝对）</p>
+<ul>
+<li>二进制文件（图片、视频、音频等）</li>
+<li>Word、Excel</li>
+<li>超过100MB的文件</li>
+</ul>
+<h2>3 从本地代码到远程仓库</h2>
+<p>本小节主要讨论如何从一个本地的代码文件夹出发，建立本地的Git仓库，并将其推送到Github远程仓库。</p>
+<h3>3.1 前置准备</h3>
+<ol>
+<li>安装Git</li>
+<li>Github配置SSH连接（可选但强烈建议：Setting-&gt;SSH and GPG keys-&gt;按照教程操作）</li>
+<li>一个初始的项目</li>
+</ol>
+<h3>3.2 创建仓库</h3>
+<p>打开命令行（CMD/Powershell/Git Bash）切换至项目文件夹目录</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git init
+git add <span class="pl-c1">.</span>
+git commit -m <span class="pl-s"><span class="pl-pds">"</span>Initial commit<span class="pl-pds">"</span></span></pre></div>
+<ol>
+<li><code class="notranslate">git init</code> 初始化一个本地Git仓库</li>
+<li><code class="notranslate">git add .</code> 将当前目录下所有文件加入缓存区（Staging）</li>
+<li><code class="notranslate">git commit -m "Initial commit"</code> 将缓存的修改生成一个commit提交至本地仓库</li>
+</ol>
+<p>Git的四个区域</p>
+<ol>
+<li><code class="notranslate">Disk</code>：本地文件夹（工作区）。当前文件夹中所有文件当前状态</li>
+<li><code class="notranslate">Staging</code>：缓存区（索引）。已缓存的文件修改，等待下一步commit</li>
+<li><code class="notranslate">Local</code>：本地仓库。</li>
+<li><code class="notranslate">Remote</code>：远程仓库</li>
+</ol>
+<h3>3.3 下一步尝试</h3>
+<p>初次提交后，以目前版本代码创建一个节点保存在本地仓库中。此后允许我们</p>
+<ul>
+<li>
+<p>继续在当前版本上迭代开发：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>This is a tutorial for git<span class="pl-pds">"</span></span> <span class="pl-k">&gt;</span> README.md
+git add README.md
+git status
+git commit -m <span class="pl-s"><span class="pl-pds">"</span>Add README<span class="pl-pds">"</span></span></pre></div>
+</li>
+<li>
+<p>切换到某一commit版本：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git log
+git checkout <span class="pl-smi">${commit_id}</span>
+git checkout master</pre></div>
+</li>
+<li>
+<p>回退到某一commit版本：</p>
+<p>方式1：直接撤销并回退到上一个版本</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git log
+git reset HEAD~1</pre></div>
+<p>方式2：创建一个新的commit以覆盖的方式撤销某个版本的修改</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git log
+git revert HEAD~1</pre></div>
+<p><code class="notranslate">HEAD~1</code>：HEAD表示本地仓库指针，指向当前最新版本，~N表示回退N个commit。另一种方式是通过<code class="notranslate">git log</code>找到需要回退的commit版本，然后使用<code class="notranslate">git reset ${commit_id}</code>命令回退到所在版本。</p>
+</li>
+<li>
+<p>新建分支开发不同版本的代码</p>
+<p>新建分支<code class="notranslate">addition</code>，在该分支上添加新的文件<code class="notranslate">add.txt</code>。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git checkout -b addition
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>Additional content<span class="pl-pds">"</span></span> <span class="pl-k">&gt;</span> add.txt
+git add add.txt
+git commit -m <span class="pl-s"><span class="pl-pds">"</span>Add additional file<span class="pl-pds">"</span></span></pre></div>
+</li>
+</ul>
+<h3>3.4 推送至远程仓库</h3>
+<p>现在已经创建了一个基础的本地仓库。假设存在在其他设备上继续开发的需求，或者想与他人共享代码，除了通过文件的形式传输，还可以通过将本地仓库推送至Github远程仓库实现多人或多设备的代码同步。下面将介绍具体的操作步骤，其中大部分命令操作在Github新建仓库上也提供提示。</p>
+<ol>
+<li>在Github上创建一个仓库</li>
+<li>将本地仓库与远程仓库关联</li>
+</ol>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git remote add origin <span class="pl-smi">${remote_url}</span>
+git remote -v
+git push origin master:main</pre></div>
+<p>这一步中可以看到本地分支和远程分支的名称不一致，这是因为Github默认分支名称为<code class="notranslate">main</code>，而本地默认分支名称为<code class="notranslate">master</code>，因此需要指定推送的分支名称。除此之外也可以将本地默认分支名称进行修改使其一致，执行命令。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git branch -m main
+git push origin main</pre></div>
+<blockquote>
+<p>[!WARNING] 本地和远程分支名不一致会在推送时带来潜在的麻烦，建议修改保持分支名称一致性</p>
+</blockquote>
+<h2>4 从远程仓库到本地代码</h2>
+<h3>4.1 第一次拉取</h3>
+<p>先从拉取自己或他人的项目到本地开始。将远程仓库<code class="notranslate">${remote_url}</code>的代码克隆倒当前文件夹。先拉取main分支，随后将其他分支逐个拉取至本地。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git clone <span class="pl-smi">${remote_url}</span>
+<span class="pl-c1">cd</span> <span class="pl-smi">${repo_name}</span>
+git checkout -b addition origin/addition</pre></div>
+<p>还可以再<code class="notranslate">clone</code>时传入参数修改repo的本地文件夹名称，即<code class="notranslate">git clone ${remote_url} ${local_repo_name}</code>。第三行命令则是在本地创建一个新的分支<code class="notranslate">addition</code>，并将远程仓库的<code class="notranslate">addition</code>分支拉取至本地，这样的话就能实现将远程仓库的其他分支拉取至本地的操作了。</p>
+<h3>4.2 同步远程仓库</h3>
+<p>假设目前已经拉取了远程仓库的代码，但自己在其他设备上或者由他人对远程仓库进行了更新，现需要将远程仓库的修改同步至本地。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git pull origin main
+git pull origin dev:dev</pre></div>
+<p>第一行命令指从远程仓库<code class="notranslate">origin</code>的<code class="notranslate">main</code>分支拉取最新的代码和当前分支合并。如果需要合并的是其他分支则需要使用第二行命令，显式给定分支名。</p>
+<p>实际上<code class="notranslate">pull</code>命令是<code class="notranslate">fetch</code>和<code class="notranslate">merge</code>的组合，<code class="notranslate">fetch</code>是将远程仓库的代码拉取至本地，<code class="notranslate">merge</code>是将远程仓库的代码合并至本地仓库（产生一个Merge的commit提交）。</p>
+<h4>4.2.1 Case 1: Fast forward</h4>
+<p>当本地分支并没有产生新的commit时，<code class="notranslate">pull</code>操作是非常轻松的，它只是通过<code class="notranslate">fetch</code>获取远程仓库的commit记录并在本地同步，随后将<code class="notranslate">HEAD</code>指向同步后的最新commit。</p>
+<p>在这种情况下看似没有进行<code class="notranslate">merge</code>，这是因为<code class="notranslate">pull</code>时默认采用<code class="notranslate">fast-forward</code>模式，即命令行中默认传入参数--ff。这意味着如果被合并的分支是当前分支的直接下游，那么直觉上就没有必要多创建一个commit了，只需修改<code class="notranslate">HEAD</code>指针即可。当然可以通过使用参数<code class="notranslate">--no-ff</code>仍然在<code class="notranslate">merge</code>时创建一个新的commit（可以但没必要）。</p>
+<div class="highlight highlight-source-mermaid"><pre class="notranslate">%%<span class="pl-s1">{init<span class="pl-k">:</span> { <span class="pl-s"><span class="pl-pds">'</span>logLevel<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>debug<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>theme<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>default<span class="pl-pds">'</span></span> } }</span>%%
+<span class="pl-k">gitGraph</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">branch</span> <span class="pl-en">origin/main</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">commit</span></pre></div>
+<h4>4.2.2 Case 2: Merge (No Conflict)</h4>
+<p>但是当本地和远程有不同的commit时情况就会稍微复杂些，这个时候则需要涉及到实际的<code class="notranslate">merge</code>操作。</p>
+<p>假设同时有两个开发者在同一个分支上工作，另一个开发者已经提交了新的commit并推送到远程仓库，此时本地仓库我们自己也有新的commit</p>
+<div class="highlight highlight-source-mermaid"><pre class="notranslate">%%<span class="pl-s1">{init<span class="pl-k">:</span> { <span class="pl-s"><span class="pl-pds">'</span>logLevel<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>debug<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>theme<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>default<span class="pl-pds">'</span></span> } }</span>%%
+<span class="pl-k">gitGraph</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">branch</span> <span class="pl-en">origin/main</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">checkout</span> <span class="pl-en">main</span>
+  <span class="pl-k">commit</span></pre></div>
+<p>假设本地的修改和远程的修改没有冲突，这是最简单的情况，那么<code class="notranslate">pull</code>操作会自动合并两个分支的修改，产生一个新的commit（通常情况下会进入vi并在自动生成的commit信息的基础上进行修改或确认）。</p>
+<div class="highlight highlight-source-mermaid"><pre class="notranslate">%%<span class="pl-s1">{init<span class="pl-k">:</span> { <span class="pl-s"><span class="pl-pds">'</span>logLevel<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>debug<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>theme<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>default<span class="pl-pds">'</span></span> } }</span>%%
+<span class="pl-k">gitGraph</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">branch</span> <span class="pl-en">origin/main</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">checkout</span> <span class="pl-en">main</span>
+  <span class="pl-k">merge</span> <span class="pl-en">origin/main</span>
+  <span class="pl-k">commit</span></pre></div>
+<h4>4.2.3 Case 3: Merge (Conflict)</h4>
+<p>当两个开发者在同一行上都做了修改时，这时就会产生冲突，这时机智如Git也没有办法知道怎么取舍代码解决冲突，这时就需要手动解决冲突。在执行<code class="notranslate">pull</code>操作后，Git会提示冲突的文件，此时处于未<code class="notranslate">merge</code>的状态</p>
+<pre lang="text" class="notranslate"><code class="notranslate">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+I think this is a dog
+=======
+I believe this is a pig
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-a
+</code></pre>
+<p>在编辑器中选择其中认为正确的代码，并删除冲突标记符号<code class="notranslate">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>、<code class="notranslate">=======</code>、<code class="notranslate">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>。解决全部冲突后，即可通过<code class="notranslate">git add</code>和<code class="notranslate">git commit</code>将合并以及冲突解决的代码作为一个新的commit提交至本地仓库。</p>
+<h4>4.2.4 Option: Rebase</h4>
+<p>除了<code class="notranslate">merge</code>操作外，还有一种操作是<code class="notranslate">rebase</code>，它也是合并分支的一种方式，区别于<code class="notranslate">merge</code>的点是<code class="notranslate">rebase</code>会将本地的commit放在远程commit的后面，保持提交树的线性。<code class="notranslate">rebase</code>操作的结果如下所示</p>
+<div class="highlight highlight-source-mermaid"><pre class="notranslate">%%<span class="pl-s1">{init<span class="pl-k">:</span> { <span class="pl-s"><span class="pl-pds">'</span>logLevel<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>debug<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>theme<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>default<span class="pl-pds">'</span></span> } }</span>%%
+<span class="pl-k">gitGraph</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">commit</span>
+  <span class="pl-k">commit</span> <span class="pl-v">tag</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>origin/main<span class="pl-pds">"</span></span>
+  <span class="pl-k">branch</span> <span class="pl-en">origin/main</span>
+  <span class="pl-k">checkout</span> <span class="pl-en">main</span>
+  <span class="pl-k">commit</span></pre></div>
+<p><code class="notranslate">rebase</code>的背后原理是舍弃原有的提交，重新构建tree，看似很完美，但并不是所有情况都适合使用的。<em>如果提交存在于你的仓库之外，而别人可能基于这些提交进行开发，那么不要执行变基</em>（From Git book）。换而言之，如果确认这个分支只有你一个开发时，即别人不会在该分支上进行额外的<code class="notranslate">merge</code>或其他操作，请随意使用<code class="notranslate">rebase</code>使得提交tree保持整洁。</p>
+<h2>5 合并分支</h2>
+<p>合并的分支既可以是远程仓库的分支<code class="notranslate">origin/main</code>，也可以是本地仓库的其他分支<code class="notranslate">dev</code></p>
+<p>合并其他分支的同样也依赖于<code class="notranslate">merge</code>操作。既然通过<code class="notranslate">pull</code>操作已经对<code class="notranslate">merge</code>有了基础的了解，那么从本地仓库的其他分支合并也和从远程仓库分支合并无异。本章节将介绍除了冲突解决以外，进行分支合并时有哪些事情需要注意，以及可能会使用到的技巧。</p>
+<h3>5.1 合并前暂存未提交的修改</h3>
+<p>在<code class="notranslate">pull</code>或<code class="notranslate">merge</code>之前，最好的做法是先将本地的当前的修改进行commit，避免修改的文件和远程仓库/其他分支发生冲突。当然更多情况是目前的修改尚未完全不想形成一次半成品的commit，这时可以使用<code class="notranslate">stash</code>将当前缓存区的修改缓存（隐藏）到堆栈中，具体操作如下所示</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git stash
+git pull
+git stash pop</pre></div>
+<p><code class="notranslate">stash</code>缓存的是已经处于缓存区的修改，这包含：(1) 通过<code class="notranslate">git add</code>加入的新建文件（2）在原有已追踪文件上的修改（不管是否已加入缓存区）。但不包含未加入缓存区（未追踪）的新建文件。恢复堆栈中隐藏的缓存区修改有两种方式：</p>
+<ul>
+<li>通过<code class="notranslate">git stash pop</code>将最新的缓存恢复至工作区（常用）</li>
+<li>先<code class="notranslate">git stash list</code>查看当前缓存区的列表，然后通过<code class="notranslate">git stash apply stash@{n}</code>恢复指定的缓存</li>
+</ul>
+<p><code class="notranslate">stash</code>除了在进行<code class="notranslate">pull</code>和<code class="notranslate">merge</code>时存在未提交的修改时发挥作用外，在想要进行分支切换时也能派上用场。对于未追踪的文件来说，使用<code class="notranslate">checkout</code>切换分支时，这些文件也会被带到新的分支上，往往这不是我们想要的，我们希望切换后的分支尽可能保持干净。</p>
+<p>此时在切换前通过通过<code class="notranslate">git stash -u</code>命令缓存所有与当前<code class="notranslate">HEAD</code>指向的干净的工作区状态不同的文件，其中<code class="notranslate">-u</code>参数意思为缓存未追踪的文件。此后完成另一个分支上的工作后，切换回当前分支，只需要<code class="notranslate">stash pop</code>即可避免未追踪的文件在分支间流窜。</p>
+<blockquote>
+<p>[!TIP] Pull时也可以加入--autostash参数，自动在Merge前后实现stash和stash pop操作。</p>
+</blockquote>
+<p>如果缓存在栈上的修改和Merge后的代码存在冲突时，则在恢复后同样会以冲突标记符号的形式提示冲突，需要手动解决。处理完后并不一定需要commit，只需要add即可。因为发生冲突的部分代码是提交树与缓存区的冲突，这部分冲突的处理可以理解成将当前的缓存修改基于原有的<code class="notranslate">HEAD</code>变为基于新的<code class="notranslate">HEAD</code>上的修改，那么解决冲突后的修改也就不急着commit</p>
+<h3>5.2 合并单条commit</h3>
+<p>有时候我们并不希望将其他分支的所有commit都合并过来，而只需要合并其中一个或多个对本分支有同样作用的commit，这个时候需要用到<code class="notranslate">cherry-pick</code>命令</p>
+<div class="highlight highlight-source-mermaid"><pre class="notranslate">%%<span class="pl-s1">{init<span class="pl-k">:</span> { <span class="pl-s"><span class="pl-pds">'</span>logLevel<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>debug<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>theme<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>default<span class="pl-pds">'</span></span> } }</span>%%
+<span class="pl-k">gitGraph</span>
+  <span class="pl-k">commit</span> <span class="pl-v">id</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>
+  <span class="pl-k">commit</span> <span class="pl-v">id</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>
+  <span class="pl-k">branch</span> <span class="pl-en">dev</span>
+  <span class="pl-k">commit</span> <span class="pl-v">id</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>c<span class="pl-pds">"</span></span>
+  <span class="pl-k">commit</span> <span class="pl-v">id</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>d<span class="pl-pds">"</span></span>
+  <span class="pl-k">checkout</span> <span class="pl-en">main</span>
+  <span class="pl-k">commit</span> <span class="pl-v">id</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>e<span class="pl-pds">"</span></span></pre></div>
+<p>此时只需要合并commit <strong>c</strong>，只需要执行<code class="notranslate">git cherry-pick c</code>即可，提交树则变为</p>
+<div class="highlight highlight-source-mermaid"><pre class="notranslate">%%<span class="pl-s1">{init<span class="pl-k">:</span> { <span class="pl-s"><span class="pl-pds">'</span>logLevel<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>debug<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>theme<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>default<span class="pl-pds">'</span></span> } }</span>%%
+<span class="pl-k">gitGraph</span>
+  <span class="pl-k">commit</span> <span class="pl-v">id</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>a<span class="pl-pds">"</span></span>
+  <span class="pl-k">commit</span> <span class="pl-v">id</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>b<span class="pl-pds">"</span></span>
+  <span class="pl-k">branch</span> <span class="pl-en">dev</span>
+  <span class="pl-k">commit</span> <span class="pl-v">id</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>c<span class="pl-pds">"</span></span>
+  <span class="pl-k">commit</span> <span class="pl-v">id</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>d<span class="pl-pds">"</span></span>
+  <span class="pl-k">checkout</span> <span class="pl-en">main</span>
+  <span class="pl-k">commit</span> <span class="pl-v">id</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>e<span class="pl-pds">"</span></span>
+  <span class="pl-k">cherry-pick</span> <span class="pl-v">id</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>c<span class="pl-pds">"</span></span></pre></div>
+<p><code class="notranslate">cherry-pick</code>也支持多个commit的合并，如</p>
+<ul>
+<li><code class="notranslate">git cherry-pick ${commit hash 1} ${commit hase2}</code>：合并commit1、commit2</li>
+<li><code class="notranslate">git cherry-pick ${commit hash 1}..${commit hash 2}</code>：合并commit1到commit2之间的所有commit</li>
+<li><code class="notranslate">git cherry-pick ${commit hash 1}^..${commit hash 2}</code>：合并commit1到commit2之间的所有commit，但不包括commit1</li>
+</ul>
+<h2>6 “规范”的代码仓库其他建议</h2>
+<h3>6.1 Git配置</h3>
+<p>这里将介绍一些常用且有用的Git配置</p>
+<ul>
+<li><code class="notranslate">git config --global user.name "Your Name"</code>：设置全局用户名</li>
+<li><code class="notranslate">git config --global user.email "Your Email"</code>：设置全局邮箱</li>
+<li><code class="notranslate">git config --global init.defaultBranch main</code>：设置默认分支名称</li>
+</ul>
+<p><code class="notranslate">--global</code>参数将会对本用户所有仓库生效。如果在多人共用账号的服务器上使用时，用户名或邮箱宜只对个人仓库单独配置，即使用<code class="notranslate">--local</code>参数替代，此时配置信息将保存在项目根目录的<code class="notranslate">.git/config</code>文件中</p>
+<h3>6.2 提交信息</h3>
+<p>提交信息用于说明本次提交修改的内容，一个好的提交信息应当包括：</p>
+<ol>
+<li>提交类型</li>
+<li>修改涉及的模块（Optional）</li>
+<li>修改具体内容描述</li>
+</ol>
+<pre lang="text" class="notranslate"><code class="notranslate">&lt;type&gt;[optional scope]: &lt;description&gt;
+
+[optional body]
+
+[optional footer(s)]
+</code></pre>
+<p>一个提交信息的实例，通常只需要第一行就好了</p>
+<pre lang="text" class="notranslate"><code class="notranslate">feat (model): model can provide prediction for new data
+</code></pre>
+<p>修改类型包括</p>
+<ul>
+<li><code class="notranslate">feat</code>：添加新功能</li>
+<li><code class="notranslate">fix</code>：修复bug</li>
+<li><code class="notranslate">hotfix</code>：紧急修复bug（更加简短的修改）</li>
+<li><code class="notranslate">chore</code>：和修复bug或添加功能无关的改变，不涉及<code class="notranslate">src</code>主体代码的修改</li>
+<li><code class="notranslate">refactor</code>：并添加新功能或修复问题的代码重构</li>
+<li><code class="notranslate">docs</code>：仅仅修改文档，如README或其他说明文档</li>
+<li><code class="notranslate">style</code>：不影响代码含义的修改，如空格、格式化等</li>
+<li><code class="notranslate">test</code>：添加或修改测试代码</li>
+<li><code class="notranslate">revert</code>：撤销之前的提交</li>
+</ul>
+<p>注：Merge操作产生的commit的提交信息使用默认的即可</p>
+<p>另外在提交时应当注意避免使用<code class="notranslate">git add .</code>命令将所有文件加入缓存区，而是应当进行筛选后，使用<code class="notranslate">git add src/xxx</code>将所需要的部分文件加入缓存区，这样可以保持提交的简洁性或避免将无用的临时文件提交。</p>
+<h3>6.3 主分支保护</h3>
+<p>一般来说，主分支（<code class="notranslate">main</code>）是项目的稳定版本，因此不建议直接在主分支进行直接的修改。如果确信这是个人项目且不会产生其他的分支需求，直接在主分支上修改是可接受的，但不是最佳选择。</p>
+<p>为了对主分支进行保护，应当在主分支的基础上创建新的开发分支，在开发分支上完成全部开发、测试工作后，将其合并至主分支。这样可以保证主分支的稳定性，同时也可以保证开发分支的独立性。</p>
+<h3>6.4 谨慎使用破坏性命令</h3>
+<ul>
+<li><code class="notranslate">git push -f</code>：强制推送本地仓库覆盖远程仓库，这可能导致他人的commit tree产生混乱</li>
+<li><code class="notranslate">git clean</code>：删除所有未追踪的文件。此删除不可逆，若要使用可加入<code class="notranslate">-n</code>参数检视要删除的文件</li>
+<li><code class="notranslate">git checkout -f</code>：当切换存在冲突强制执行，这会导致潜在的未提交的修改丢失</li>
+<li><code class="notranslate">git reset --hard</code>：该命令将放弃工作区和暂存区的所有更改，将存储库恢复到以前的提交。这会导致所有未提交的已追踪文件修改丢失（未追踪的不受影响），请谨慎使用。一般使用<code class="notranslate">git reset --soft</code>或<code class="notranslate">git reset --mixed</code>（默认方式）是安全的，虽然提交树会重置，但是至少修改未丢失</li>
+</ul>
+<p>这些命令也绝非完全不能使用，但在使用前请确保自己知道这些执行命令会发生什么变化，在常规方式发生错误前先熟读报错提示信息，确实没有更合适的方式后再考虑使用这些存在不可逆风险的命令。</p>
+<h3>6.5 .gitignore</h3>
+<p><code class="notranslate">.gitignore</code>文件是用于告诉项目文件夹中哪些文件或文件夹不希望被Git追踪。即便所有代码或文件是必要的，但仍有可能产生的一些临时文件或日志文件不应当被提交。其中常见的包括</p>
+<ul>
+<li>编译生成的文件</li>
+<li>IDE或编辑器生成的文件</li>
+<li>日志文件</li>
+<li>系统生成文件</li>
+<li>包含个人账号信息或数据的敏感信息文件（千万不要将该信息push到远程仓库，尤其是设置为公开的仓库）</li>
+</ul>
+<p><code class="notranslate">.gitignore</code>的匹配模式和语法请参考<a href="https://git-scm.com/docs/gitignore/zh_HANS-CN" rel="nofollow">文档</a>。下面给出一个Python项目的简化版本<code class="notranslate">.gitignore</code>文件示例</p>
+<div class="highlight highlight-source-gitignore"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> python temp files</span>
+<span class="pl-e">__pycache__</span>/
+<span class="pl-k">*</span><span class="pl-e">.egg-info</span>/
+
+<span class="pl-c"><span class="pl-c">#</span> log files</span>
+<span class="pl-k">*</span><span class="pl-e">.log</span>
+<span class="pl-e">logs</span>/
+
+<span class="pl-c"><span class="pl-c">#</span> IDE files</span>
+<span class="pl-e">.idea</span>
+<span class="pl-e">.vscode</span>
+<span class="pl-e">.vs</span>
+
+<span class="pl-c"><span class="pl-c">#</span> system files</span>
+<span class="pl-e">.DS_Store</span>
+
+<span class="pl-c"><span class="pl-c">#</span> &gt;&gt;&gt; Custom ignore starts here &gt;&gt;&gt;</span>
+
+<span class="pl-e">password.json</span>  <span class="pl-c"><span class="pl-c">#</span> e.g.</span>
+
+<span class="pl-c"><span class="pl-c">#</span> &lt;&lt;&lt; Custom ignore ends &lt;&lt;&lt;</span></pre></div>
+<p><code class="notranslate">gitignore</code>不影响已追踪的文件，要想忽略已追踪的文件，需要先执行<code class="notranslate">git rm --cached ${file}</code>将其从缓存区删除，然后再将该文件添加到<code class="notranslate">.gitignore</code>文件中。</p>
+<h3>6.6 .gitkeep</h3>
+<p>Git默认不追踪空文件夹，但是如果想改变这一默认行为将空文件夹加入追踪，则可以创建一个空的文件命名为<code class="notranslate">.gitkeep</code>，即可实现这一效果</p>
+<p>另一种场景是当文件夹中包含一些数据文件不需要进行提交，但是又需要将该文件夹本身进行提交。此时在文件夹内创建一个<code class="notranslate">.gitkeep</code>文件后，配合<code class="notranslate">.gitignore</code>使用即可</p>
+<div class="highlight highlight-source-gitignore"><pre class="notranslate"><span class="pl-e">FOLDER_NMAME</span>/<span class="pl-k">*</span>
+<span class="pl-k">!</span><span class="pl-e">FOLDER_NAME</span>/<span class="pl-e">.gitkeep</span></pre></div></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://Guo233333333.github.io/patrickguo.github.io">Patrick's Blog</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Guo233333333/patrickguo.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
