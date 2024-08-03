@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="> 原文地址 [[www.cnblogs.com](https://www.cnblogs.com/shijiehaiyang/p/17786391.html)](https://www.cnblogs.com/shijiehaiyang/p/17786391.html)
+
+欲善其事，必先利其器。">
+<meta property="og:title" content="vscode新手配置">
+<meta property="og:description" content="> 原文地址 [[www.cnblogs.com](https://www.cnblogs.com/shijiehaiyang/p/17786391.html)](https://www.cnblogs.com/shijiehaiyang/p/17786391.html)
+
+欲善其事，必先利其器。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://Guo233333333.github.io/patrickguo.github.io/post/vscode-xin-shou-pei-zhi.html">
+<meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
+<title>vscode新手配置</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">vscode新手配置</h1>
+<div class="title-right">
+    <a href="https://Guo233333333.github.io/patrickguo.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Guo233333333/patrickguo.github.io/issues/8" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><blockquote>
+<p>原文地址 [<a href="https://www.cnblogs.com/shijiehaiyang/p/17786391.html" rel="nofollow">www.cnblogs.com</a>](<a href="https://www.cnblogs.com/shijiehaiyang/p/17786391.html" rel="nofollow">https://www.cnblogs.com/shijiehaiyang/p/17786391.html</a>)</p>
+</blockquote>
+<p>欲善其事，必先利其器。想要优雅且高效的编写代码，必须熟练使用一款前端开发工具。但前端开发工具数不胜数，像 HBuilder、Sublime Text、WebStorm、Visual Studio Code...... 等等, 其中 VSCode 以其轻量且强大的代码编辑功能和丰富的插件生态系统，独受前端工师的青睐。网上有很多 vscode 的配置以及使用博客，但都没有本篇那么详细且全面。</p>
+<p>软件下载</p>
+<p>直接在官网进行下载</p>
+<p>[<a href="https://link.zhihu.com/?target=https%3A//code.visualstudio.com/" rel="nofollow">Visual Studio Code - Code Editing. Redefined​code.visualstudio.com/</a><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c3ae681448c6ff123dae8e28c4f3f5ac418372b61edddb8ae24021fa613554d9/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d62656162613030396335343261396636666531643230333461376564353638625f313830783132302e6a7067"><img src="https://camo.githubusercontent.com/c3ae681448c6ff123dae8e28c4f3f5ac418372b61edddb8ae24021fa613554d9/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d62656162613030396335343261396636666531643230333461376564353638625f313830783132302e6a7067" alt="" data-canonical-src="https://pic4.zhimg.com/v2-beaba009c542a9f6fe1d2034a7ed568b_180x120.jpg" style="max-width: 100%;"></a>](<a href="https://link.zhihu.com/?target=https%3A//code.visualstudio.com/" rel="nofollow">https://link.zhihu.com/?target=https%3A//code.visualstudio.com/</a>)</p>
+<p>最近很多人留言说官网下载被限速，如果大家存在这种情况，可以在 “前端码头” 后台发送 vscode 获取软件包。</p>
+<p>首页</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b79ece3bf509d614277407d72ef7c2fd1a3dfad8936d67d2248a8f048895a32c/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d30663034396535663530656231313735656561373933663135666139356230385f722e6a7067"><img src="https://camo.githubusercontent.com/b79ece3bf509d614277407d72ef7c2fd1a3dfad8936d67d2248a8f048895a32c/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d30663034396535663530656231313735656561373933663135666139356230385f722e6a7067" alt="" data-canonical-src="https://pic1.zhimg.com/v2-0f049e5f50eb1175eea793f15fa95b08_r.jpg" style="max-width: 100%;"></a></p>
+<p>vscode 设置成中文</p>
+<p>vscode 默认的语言是英文，对于英文不好的小伙伴可能不太友好。简单几步教大家如何将 vscode 设置成中文。</p>
+<ol>
+<li>按快捷键 “Ctrl+Shift+P”。</li>
+<li>在 “vscode” 顶部会出现一个搜索框。</li>
+<li>输入 “configure language”，然后回车。</li>
+<li>“vscode” 里面就会打开一个语言配置文件。</li>
+<li>将 “en-us” 修改成“zh-cn”。</li>
+<li>按 “Ctrl+S” 保存设置。</li>
+<li>关闭 “vscode”，再次打开就可以看到中文界面了。</li>
+</ol>
+<p>当然如果你不愿意设置，也可以直接安装它的中文插件，还是很人性化的。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d34968c5fea308f283baa52a56477362317e8f260816ebddf770856fb9b27afb/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d64646266613166383862663537666665366132636565333461393733323433665f722e6a7067"><img src="https://camo.githubusercontent.com/d34968c5fea308f283baa52a56477362317e8f260816ebddf770856fb9b27afb/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d64646266613166383862663537666665366132636565333461393733323433665f722e6a7067" alt="" data-canonical-src="https://pic4.zhimg.com/v2-ddbfa1f88bf57ffe6a2cee34a973243f_r.jpg" style="max-width: 100%;"></a></p>
+<p>VScode 用户设置</p>
+<ol>
+<li>打开设置</li>
+</ol>
+<p>文件 -- 首选项 -- 设置，打开用户设置。VScode 支持选择配置，也支持编辑 setting.json 文件修改默认配置。个人更倾向于编写 json 的方式进行配置，下面会附上我个人的配置代码</p>
+<p>这里解析几个常用配置项：</p>
+<p>（1）editor.fontsize 用来设置字体大小，可以设置 editor.fontsize : 14;</p>
+<p>（2）files.autoSave 这个属性是表示文件是否进行自动保存，推荐设置为 onFocusChange——文件焦点变化时自动保存。</p>
+<p>（3）editor.tabCompletion 用来在出现推荐值时，按下 Tab 键是否自动填入最佳推荐值，推荐设置为 on;</p>
+<p>（4）editor.codeActionsOnSave 中的 source.organizeImports 属性，这个属性能够在保存时，自动调整 import 语句相关顺序，能够让你的 import 语句按照字母顺序进行排列，推荐设置为 true, 即 "editor.codeActionsOnSave": {"source.organizeImports": true}；</p>
+<p>（5）editor.lineNumbers 设置代码行号, 即 editor.lineNumbers ：true；</p>
+<p>我的个人配置，供参考：</p>
+<pre class="notranslate"><code class="notranslate">{
+  "files.associations": {
+  "*.vue": "vue",
+  "*.wpy": "vue",
+  "*.wxml": "html",
+  "*.wxss": "css"
+  },
+  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.showAbbreviationSuggestions": true,
+  "emmet.showExpandedAbbreviation": "always",
+  "emmet.includeLanguages": {
+  "vue-html": "html",
+  "vue": "html",
+  "wpy": "html"
+  },
+  //主题颜色 
+  //"workbench.colorTheme": "Monokai",
+  "git.confirmSync": false,
+  "explorer.confirmDelete": false,
+  "editor.fontSize": 14,
+  "window.zoomLevel": 1,
+  "editor.wordWrap": "on",
+  "editor.detectIndentation": false,
+  // 重新设定tabsize
+  "editor.tabSize": 2,
+  //失去焦点后自动保存
+  "files.autoSave": "onFocusChange",
+  // #值设置为true时，每次保存的时候自动格式化；
+  "editor.formatOnSave": false,
+   //每120行就显示一条线
+  "editor.rulers": [
+  ],
+  // 在使用搜索功能时，将这些文件夹/文件排除在外
+  "search.exclude": {
+      "**/node_modules": true,
+      "**/bower_components": true,
+      "**/target": true,
+      "**/logs": true,
+  }, 
+  // 这些文件将不会显示在工作空间中
+  "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/*.js": {
+          "when": "$(basename).ts" //ts编译后生成的js文件将不会显示在工作空中
+      },
+      "**/node_modules": true
+  }, 
+  // #让vue中的js按"prettier"格式进行格式化
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatterOptions": {
+      "js-beautify-html": {
+          // #vue组件中html代码格式化样式
+          "wrap_attributes": "force-aligned", //也可以设置为“auto”，效果会不一样
+          "wrap_line_length": 200,
+          "end_with_newline": false,
+          "semi": false,
+          "singleQuote": true
+      },
+      "prettier": {
+          "semi": false,
+          "singleQuote": true
+      }
+  }
+}
+</code></pre>
+<p><strong>最近经常有人微信问我，这个配置代码写在哪里？</strong></p>
+<p>新版的 vscode 设置默认为 UI 的设置，而非之前的 json 设置。如果你想复制我上面这段代码进行配置，可以进行下面的修改</p>
+<p>文件 &gt; 首选项 &gt; 设置 &gt; 搜索 workbench.settings.editor，选中 json 即可改成 json 设置；</p>
+<p><strong>禁用自动更新</strong></p>
+<p>文件 &gt; 首选项 &gt; 设置（macOS：代码 &gt; 首选项 &gt; 设置，搜索 update mode 并将设置更改为 none。</p>
+<p><strong>开启代码提示设置</strong></p>
+<p>第一步：点击左下角点击设置图标，找到并点击 “setting”</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/600aeb20826530ceb82a9c9756cbc4b93e008fc53fa4acc7e8f4f666e0c8d612/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d65653337643539633164376334646130373235666566623338623538616264655f722e6a7067"><img src="https://camo.githubusercontent.com/600aeb20826530ceb82a9c9756cbc4b93e008fc53fa4acc7e8f4f666e0c8d612/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d65653337643539633164376334646130373235666566623338623538616264655f722e6a7067" alt="" data-canonical-src="https://pic3.zhimg.com/v2-ee37d59c1d7c4da0725fefb38b58abde_r.jpg" style="max-width: 100%;"></a></p>
+<p>第二步：到搜索框里搜索 “prevent”---&gt; 并取消此项的勾选</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7bda823c04d89aa4dff2867dfbd5d9d8f708e4950c5eebf160b09a6b70efe86c/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d61396634343933386565376435373665616336396233616461306334613934655f722e6a7067"><img src="https://camo.githubusercontent.com/7bda823c04d89aa4dff2867dfbd5d9d8f708e4950c5eebf160b09a6b70efe86c/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d61396634343933386565376435373665616336396233616461306334613934655f722e6a7067" alt="" data-canonical-src="https://pic3.zhimg.com/v2-a9f44938ee7d576eac69b3ada0c4a94e_r.jpg" style="max-width: 100%;"></a></p>
+<p>常用的快捷键</p>
+<p>高效的使用 vscode, 记住一些常用的快捷键是必不可少的，我给大家罗列了一些日常工作过程中用的多的快捷键。</p>
+<p>以下以 Windows 为主，windows 的 Ctrl，mac 下换成 Command 就行了</p>
+<p>对于 <strong>行</strong> 的操作：</p>
+<ul>
+<li>重开一行：光标在行尾的话，回车即可；不在行尾，ctrl <code class="notranslate">+ enter</code> 向下重开一行；ctrl+<code class="notranslate">shift + enter</code> 则是在上一行重开一行</li>
+<li>删除一行：光标没有选择内容时，ctrl <code class="notranslate">+ x</code> 剪切一行；ctrl +<code class="notranslate">shift + k</code> 直接删除一行</li>
+<li>移动一行：<code class="notranslate">alt + ↑</code> 向上移动一行；<code class="notranslate">alt + ↓</code> 向下移动一行</li>
+<li>复制一行：<code class="notranslate">shift + alt + ↓</code> 向下复制一行；<code class="notranslate">shift + alt + ↑</code> 向上复制一行</li>
+<li>ctrl + z 回退</li>
+</ul>
+<p>对于 <strong>词</strong> 的操作：</p>
+<ul>
+<li>选中一个词：ctrl <code class="notranslate">+ d</code></li>
+</ul>
+<p>搜索或者替换：</p>
+<ul>
+<li>ctrl <code class="notranslate">+ f</code> ：搜索</li>
+<li>ctrl <code class="notranslate">+ alt + f</code>： 替换</li>
+<li>ctrl <code class="notranslate">+ shift + f</code>：在项目内搜索</li>
+</ul>
+<p>通过 <strong>Ctrl + `</strong> 可以打开或关闭终端</p>
+<p>Ctrl+P 快速打开最近打开的文件</p>
+<p>Ctrl+Shift+N 打开新的编辑器窗口</p>
+<p>Ctrl+Shift+W 关闭编辑器</p>
+<p>Home 光标跳转到行头</p>
+<p>End 光标跳转到行尾</p>
+<p>Ctrl + Home 跳转到页头</p>
+<p>Ctrl + End 跳转到页尾</p>
+<p>Ctrl + Shift + [ 折叠区域代码</p>
+<p>Ctrl + Shift + ] 展开区域代码</p>
+<p>Ctrl + / 添加关闭行注释</p>
+<p>Shift + Alt +A 块区域注释</p>
+<p>插件安装</p>
+<p>在输入框中输入想要安装的插件名称，点击安装即可。安装后没有效果，可以重启 vscode</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/41e3a8ec6aa2abef0968298d85cd221a3643fe766fcc403b2ce81557656a66ba/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d34653537633864313035393830333862613830363432343436653765613639385f722e6a7067"><img src="https://camo.githubusercontent.com/41e3a8ec6aa2abef0968298d85cd221a3643fe766fcc403b2ce81557656a66ba/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d34653537633864313035393830333862613830363432343436653765613639385f722e6a7067" alt="" data-canonical-src="https://pic1.zhimg.com/v2-4e57c8d10598038ba80642446e7ea698_r.jpg" style="max-width: 100%;"></a></p>
+<p><strong>必备插件</strong></p>
+<h3><strong>1、open in browser</strong></h3>
+<p>在浏览器里预览网页必备。运行 html 文件</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/845946675cb18101dcc76b116c577153d451515f283feabcf15b82d6c8b5f7d0/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d63313237663139386662356232323436316236333030353239323665313135635f722e6a7067"><img src="https://camo.githubusercontent.com/845946675cb18101dcc76b116c577153d451515f283feabcf15b82d6c8b5f7d0/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d63313237663139386662356232323436316236333030353239323665313135635f722e6a7067" alt="" data-canonical-src="https://pic1.zhimg.com/v2-c127f198fb5b22461b630052926e115c_r.jpg" style="max-width: 100%;"></a></p>
+<p>View In Browser 已被弃用，可以使用 open in browser 直接运行 html 文件</p>
+<h3>2、vscode-icons</h3>
+<p>改变编辑器里面的文件图标</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/969f5fe66b02404c8e05bfb29ffff4f8d2c6632f053d578126ee1fb57c414d22/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d33393533633139636137356634323261383734393037316131366266343034365f722e6a7067"><img src="https://camo.githubusercontent.com/969f5fe66b02404c8e05bfb29ffff4f8d2c6632f053d578126ee1fb57c414d22/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d33393533633139636137356634323261383734393037316131366266343034365f722e6a7067" alt="" data-canonical-src="https://pic3.zhimg.com/v2-3953c19ca75f422a8749071a16bf4046_r.jpg" style="max-width: 100%;"></a></p>
+<h3>3、Auto Rename Tag</h3>
+<p>自动修改匹配的 HTML 标签。</p>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5ee6ceabf397eea634541f470afa95cafd281fe5aa7188f9d023a5d162ec225e/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d33303464323830323632303937346565623336396136333032663530636663305f622e6a7067"><img src="https://camo.githubusercontent.com/5ee6ceabf397eea634541f470afa95cafd281fe5aa7188f9d023a5d162ec225e/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d33303464323830323632303937346565623336396136333032663530636663305f622e6a7067" alt="" data-canonical-src="https://pic1.zhimg.com/v2-304d2802620974eeb369a6302f50cfc0_b.jpg" style="max-width: 100%;"></a></p>
+<h3>4、Path Intellisense</h3>
+<p><strong>智能路径提示</strong>，可以在你输入文件路径时智能提示。</p>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5ee6ceabf397eea634541f470afa95cafd281fe5aa7188f9d023a5d162ec225e/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d33303464323830323632303937346565623336396136333032663530636663305f622e6a7067"><img src="https://camo.githubusercontent.com/5ee6ceabf397eea634541f470afa95cafd281fe5aa7188f9d023a5d162ec225e/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d33303464323830323632303937346565623336396136333032663530636663305f622e6a7067" alt="" data-canonical-src="https://pic1.zhimg.com/v2-304d2802620974eeb369a6302f50cfc0_b.jpg" style="max-width: 100%;"></a></p>
+<h3>5、Markdown Preview</h3>
+<p>实时预览 markdown。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d1c18968acb36a9e132198e594d0fa4ffd0c764e7354584ab127d8bcc2478a2b/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d32373663353338326266353230656438616236343235623234316135633539315f722e6a7067"><img src="https://camo.githubusercontent.com/d1c18968acb36a9e132198e594d0fa4ffd0c764e7354584ab127d8bcc2478a2b/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d32373663353338326266353230656438616236343235623234316135633539315f722e6a7067" alt="" data-canonical-src="https://pic2.zhimg.com/v2-276c5382bf520ed8ab6425b241a5c591_r.jpg" style="max-width: 100%;"></a></p>
+<h3>6、stylelint</h3>
+<p>CSS / SCSS / Less 语法检查</p>
+<h3>7、Import Cost</h3>
+<p>引入包大小计算, 对于项目打包后体积掌握很有帮助</p>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a04d2b2be1def0f6339e42f2303bf18451a58d70d905c896dce6e447b362488b/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d32646237633865303366353735653236353834623534613563326363616365365f622e6a7067"><img src="https://camo.githubusercontent.com/a04d2b2be1def0f6339e42f2303bf18451a58d70d905c896dce6e447b362488b/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d32646237633865303366353735653236353834623534613563326363616365365f622e6a7067" alt="" data-canonical-src="https://pic3.zhimg.com/v2-2db7c8e03f575e26584b54a5c2ccace6_b.jpg" style="max-width: 100%;"></a></p>
+<h3>8、Prettier</h3>
+<p>比 Beautify 更好用的代码格式化插件</p>
+<p>可以配置. prettierc.js 文件, 配合 eslint、git hooks 一起使用，提升项目代码的规范性</p>
+<pre class="notranslate"><code class="notranslate">module.exports = {
+    // 一行最多 100 字符
+    printWidth: 100,
+    // 不使用缩进符，而使用空格
+    useTabs: false,
+    // 使用 4 个空格缩进
+    tabWidth: 4,
+    tabSize: 4,
+    // 行尾需要有分号
+    semi: true,
+    // 使用单引号
+    singleQuote: true,
+    // 对象的 key 仅在必要时用引号
+    quoteProps: 'as-needed',
+    // jsx 不使用单引号，而使用双引号
+    jsxSingleQuote: false,
+    // 末尾不需要逗号 'es5'  none
+    trailingComma: 'es5',
+    // 大括号内的首尾需要空格
+    bracketSpacing: true,
+    // jsx 标签的反尖括号需要换行
+    jsxBracketSameLine: false,
+    // 箭头函数，只有一个参数的时候，也需要括号
+    arrowParens: 'always',
+    // 每个文件格式化的范围是文件的全部内容
+    rangeStart: 0,
+    rangeEnd: Infinity,
+    // 不需要写文件开头的 @prettier
+    requirePragma: false,
+    // 不需要自动在文件开头插入 @prettier
+    insertPragma: false,
+    // 使用默认的折行标准
+    proseWrap: 'preserve',
+    // 根据显示样式决定 html 要不要折行
+    htmlWhitespaceSensitivity: 'css',
+    // 换行符使用 lf 结尾是 \n \r \n\r auto
+    endOfLine: 'lf',
+};
+</code></pre>
+<p>9、code runner</p>
+<p>直接运行. js 等文件，在控制台输出结果</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/dca9eb32f21c44a5d66ea704eb72da6d5c407304e7a60639f6f5b33fa23da145/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d32653664643661646365613466323631356432336634623765386139326634645f722e6a7067"><img src="https://camo.githubusercontent.com/dca9eb32f21c44a5d66ea704eb72da6d5c407304e7a60639f6f5b33fa23da145/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d32653664643661646365613466323631356432336634623765386139326634645f722e6a7067" alt="" data-canonical-src="https://pic2.zhimg.com/v2-2e6dd6adcea4f2615d23f4b7e8a92f4d_r.jpg" style="max-width: 100%;"></a></p>
+<p>点击右上角的运行按钮</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/87259e5c99aa0b74859b8abd2bca5345af59f137e665bd1138eb27de4cd952df/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d35366463336335386330303132326231353366383932383731303565373235385f722e6a7067"><img src="https://camo.githubusercontent.com/87259e5c99aa0b74859b8abd2bca5345af59f137e665bd1138eb27de4cd952df/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d35366463336335386330303132326231353366383932383731303565373235385f722e6a7067" alt="" data-canonical-src="https://pic1.zhimg.com/v2-56dc3c58c00122b153f89287105e7258_r.jpg" style="max-width: 100%;"></a></p>
+<p>Vue 插件</p>
+<h3>vetur</h3>
+<p>语法高亮、智能感知、Emmet 等</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1cc2e71433e10374aeacf7f970ee24a564ebbdf8a0b0c843fb5478211eec55c8/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d38616264636238663130626364363030396666636164323965626466653537365f722e6a7067"><img src="https://camo.githubusercontent.com/1cc2e71433e10374aeacf7f970ee24a564ebbdf8a0b0c843fb5478211eec55c8/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d38616264636238663130626364363030396666636164323965626466653537365f722e6a7067" alt="" data-canonical-src="https://pic3.zhimg.com/v2-8abdcb8f10bcd6009ffcad29ebdfe576_r.jpg" style="max-width: 100%;"></a></p>
+<h3>VueHelper</h3>
+<p>snippet 代码片段</p>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8000f12844f5948c511c5b12f9e4e78a0199273857c1d5c6470dc07d91cc36f5/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d65373339366132343966346164326236633638653934613337636234396666355f622e6a7067"><img src="https://camo.githubusercontent.com/8000f12844f5948c511c5b12f9e4e78a0199273857c1d5c6470dc07d91cc36f5/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d65373339366132343966346164326236633638653934613337636234396666355f622e6a7067" alt="" data-canonical-src="https://pic2.zhimg.com/v2-e7396a249f4ad2b6c68e94a37cb49ff5_b.jpg" style="max-width: 100%;"></a></p>
+<h3>volar</h3>
+<p>开发 vue2 的时候使用 vetur 帮我们提供良好的代码智能提示，但使用 vue3 的时候 vetur 并不能给我们提供良好的代码提示，所以 volar 顺应而生。与 vetur 相同，volar 是一个针对 vue 的 vscode 插件，不过与 vetur 不同的是，volar 提供了更为强大的功能（使用的时候需要把 vetur 设置为禁用状态，或者直接卸载）</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/47013077f39d4651f791f2d96b5e92a2b0a2bfae1cf6c78d10938b50db22d29f/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d39666630356431613965666531343364626131623934373530393737613439345f722e6a7067"><img src="https://camo.githubusercontent.com/47013077f39d4651f791f2d96b5e92a2b0a2bfae1cf6c78d10938b50db22d29f/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d39666630356431613965666531343364626131623934373530393737613439345f722e6a7067" alt="" data-canonical-src="https://pic1.zhimg.com/v2-9ff05d1a9efe143dba1b94750977a494_r.jpg" style="max-width: 100%;"></a></p>
+<p>还可以配合 TypeScript Vue Plugin (Volar) 一起使用</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/09b39b6be4dcc348a6028fabc9e7e39a68d9ac65a726a61ebbb2d0e18aae4263/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d33643062373034653266646439303662343137336366633066336132643763645f722e6a7067"><img src="https://camo.githubusercontent.com/09b39b6be4dcc348a6028fabc9e7e39a68d9ac65a726a61ebbb2d0e18aae4263/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d33643062373034653266646439303662343137336366633066336132643763645f722e6a7067" alt="" data-canonical-src="https://pic2.zhimg.com/v2-3d0b704e2fdd906b4173cfc0f3a2d7cd_r.jpg" style="max-width: 100%;"></a></p>
+<p>提供了编辑器快捷分割和 vite 预览功能</p>
+<p>点击右上方三角代码将切成两块 script style 是一块 template 是一块</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8062e8c433ec08a11f52ccca393615dbf7003244d379c387fbd0832092930c1b/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d37323736333537333162323163353064363036393462666365653263396162625f722e6a7067"><img src="https://camo.githubusercontent.com/8062e8c433ec08a11f52ccca393615dbf7003244d379c387fbd0832092930c1b/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d37323736333537333162323163353064363036393462666365653263396162625f722e6a7067" alt="" data-canonical-src="https://pic4.zhimg.com/v2-727635731b21c50d60694bfcee2c9abb_r.jpg" style="max-width: 100%;"></a></p>
+<p>点击 vite 图标还支持快速预览功能</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/e5fd098c4cdfb0f628680a2b9f80460f27ab54957706196dcd7116e1032093f0/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d38326436386336343036633431316437636336303434323330376539663632625f722e6a7067"><img src="https://camo.githubusercontent.com/e5fd098c4cdfb0f628680a2b9f80460f27ab54957706196dcd7116e1032093f0/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d38326436386336343036633431316437636336303434323330376539663632625f722e6a7067" alt="" data-canonical-src="https://pic4.zhimg.com/v2-82d68c6406c411d7cc60442307e9f62b_r.jpg" style="max-width: 100%;"></a></p>
+<p>其它插件</p>
+<p><strong>1、CSScomb</strong></p>
+<p>CSS 书写顺序规则，这里我推荐腾讯 AollyTeam 团队的规范：</p>
+<p>[<a href="https://link.zhihu.com/?target=http%3A//alloyteam.github.io/CodeGuide/%23css-declaration-order" rel="nofollow">http://alloyteam.github.io/CodeGuide/#css-declaration-order​alloyteam.github.io/CodeGuide/#css-declaration-order</a>](<a href="https://link.zhihu.com/?target=http%3A//alloyteam.github.io/CodeGuide/%23css-declaration-order" rel="nofollow">https://link.zhihu.com/?target=http%3A//alloyteam.github.io/CodeGuide/%23css-declaration-order</a>)</p>
+<p>简单说下这个插件怎么用：</p>
+<p>在项目的根目录下创建一个名为 csscomb.json 的文件，然后添加一些配置项。也可以将配置项写入项目的 package.json 文件中的 csscombConfig 字段。</p>
+<p>至于添加的配置项，CSScomb 提供了示例配置文件：</p>
+<p>[<a href="https://link.zhihu.com/?target=https%3A//github.com/csscomb/csscomb.js/blob/master/config/csscomb.json" rel="nofollow">https://github.com/csscomb/csscomb.js/blob/master/config/csscomb.json​github.com/csscomb/csscomb.js/blob/master/config/csscomb.json</a>](<a href="https://link.zhihu.com/?target=https%3A//github.com/csscomb/csscomb.js/blob/master/config/csscomb.json" rel="nofollow">https://link.zhihu.com/?target=https%3A//github.com/csscomb/csscomb.js/blob/master/config/csscomb.json</a>)</p>
+<p>其中的 sort-order 就是 CSS 属性书写顺序，可以按照自己遵循的规范设置，所以我直接替换成了腾讯的。</p>
+<p>这个配置文件里面各个字段的作用可以戳这里查看：</p>
+<p>[<a href="https://link.zhihu.com/?target=https%3A//github.com/csscomb/csscomb.js/blob/master/doc/options.md" rel="nofollow">csscomb/csscomb.js​github.com/csscomb/csscomb.js/blob/master/doc/options.md</a>](<a href="https://link.zhihu.com/?target=https%3A//github.com/csscomb/csscomb.js/blob/master/doc/options.md" rel="nofollow">https://link.zhihu.com/?target=https%3A//github.com/csscomb/csscomb.js/blob/master/doc/options.md</a>)</p>
+<p><strong>2、Turbo Console Log</strong></p>
+<p>快捷添加 console.log，一键 注释 / 启用 / 删除 所有 console.log。这也是我最常用的一个插件</p>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a04587363d58fa214b66bdd44fc69d8b956b25284698814f284ccf8c956d1a99/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d62313461656337383231616463353761336634316163373436613536383961375f622e6a7067"><img src="https://camo.githubusercontent.com/a04587363d58fa214b66bdd44fc69d8b956b25284698814f284ccf8c956d1a99/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d62313461656337383231616463353761336634316163373436613536383961375f622e6a7067" alt="" data-canonical-src="https://pic4.zhimg.com/v2-b14aec7821adc57a3f41ac746a5689a7_b.jpg" style="max-width: 100%;"></a></p>
+<p>简单说下这个插件要用到的快捷键:</p>
+<pre class="notranslate"><code class="notranslate">ctrl + alt + l 选中变量之后，使用这个快捷键生成 console.log
+alt + shift + c 注释所有 console.log
+alt + shift + u 启用所有 console.log
+alt + shift + d 删除所有 console.log
+</code></pre>
+<p><strong>3、GitLens</strong></p>
+<p>详细的 Git 提交日志。</p>
+<p>Git 重度使用者必备，尤其是多人协作时：哪一行代码，何时、何人提交都有记录。</p>
+<p>妈妈再也不用担心我背锅了！</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/307721a5e77ba70f46d37e9dfe13e9585ebf08d192f20b01a9e7a219b4a191b5/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d35653032303436366331333536333961613333626139613236653865643266615f722e6a7067"><img src="https://camo.githubusercontent.com/307721a5e77ba70f46d37e9dfe13e9585ebf08d192f20b01a9e7a219b4a191b5/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d35653032303436366331333536333961613333626139613236653865643266615f722e6a7067" alt="" data-canonical-src="https://pic3.zhimg.com/v2-5e020466c135639aa33ba9a26e8ed2fa_r.jpg" style="max-width: 100%;"></a></p>
+<h3>4、css-auto-prefix</h3>
+<p><strong>自动添加 CSS 私有前缀</strong>。</p>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/269b1fbbb8defb42c904a44d81c97c0845f9305c6572a500f5d4ddbc2e7e2f88/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d30316434326134666230303339616362313766663561376237303864313033305f622e6a7067"><img src="https://camo.githubusercontent.com/269b1fbbb8defb42c904a44d81c97c0845f9305c6572a500f5d4ddbc2e7e2f88/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d30316434326134666230303339616362313766663561376237303864313033305f622e6a7067" alt="" data-canonical-src="https://pic1.zhimg.com/v2-01d42a4fb0039acb17ff5a7b708d1030_b.jpg" style="max-width: 100%;"></a></p>
+<h3>5、change-case</h3>
+<p><strong>转换命名风格</strong>。</p>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0fa3843ffbf21bffdfc61cfb1b4b1b399ccfeb023ebbe53ffd7beea903761f59/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d31303835616466643364633636646138656436623430633539363161373836655f622e6a7067"><img src="https://camo.githubusercontent.com/0fa3843ffbf21bffdfc61cfb1b4b1b399ccfeb023ebbe53ffd7beea903761f59/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d31303835616466643364633636646138656436623430633539363161373836655f622e6a7067" alt="" data-canonical-src="https://pic3.zhimg.com/v2-1085adfd3dc66da8ed6b40c5961a786e_b.jpg" style="max-width: 100%;"></a></p>
+<p><strong>6、CSS Peek</strong></p>
+<p><strong>定位 CSS 类名</strong>。</p>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b623b730ab30950508cbacb382c075cc70074c480a714e4ea588bd480d9f048c/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d32343732373161653734356161666665653634393736323465333335623762395f622e6a7067"><img src="https://camo.githubusercontent.com/b623b730ab30950508cbacb382c075cc70074c480a714e4ea588bd480d9f048c/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d32343732373161653734356161666665653634393736323465333335623762395f622e6a7067" alt="" data-canonical-src="https://pic2.zhimg.com/v2-247271ae745aaffee6497624e335b7b9_b.jpg" style="max-width: 100%;"></a></p>
+<p><strong>7、vscode-json</strong></p>
+<p>处理 JSON 文件，用法看图：</p>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/988d50b73882025e694686f322bf0cf85d08642405b5f53bbe5fde09889f730c/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d35613638363763323934646166653431316363353861343364653639383735645f622e6a7067"><img src="https://camo.githubusercontent.com/988d50b73882025e694686f322bf0cf85d08642405b5f53bbe5fde09889f730c/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d35613638363763323934646166653431316363353861343364653639383735645f622e6a7067" alt="" data-canonical-src="https://pic2.zhimg.com/v2-5a6867c294dafe411cc58a43de69875d_b.jpg" style="max-width: 100%;"></a></p>
+<h3>8、Regex Previewer</h3>
+<p><strong>实时预览正则表达式的效果</strong>。</p>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/41868ca4c71cb8adac4f7df5ba4306b550c8112ba3b12e6c49286a9462e6d149/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d66663166303062653737313633643465323462313436323131633631383231325f622e6a7067"><img src="https://camo.githubusercontent.com/41868ca4c71cb8adac4f7df5ba4306b550c8112ba3b12e6c49286a9462e6d149/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d66663166303062653737313633643465323462313436323131633631383231325f622e6a7067" alt="" data-canonical-src="https://pic3.zhimg.com/v2-ff1f00be77163d4e24b146211c618212_b.jpg" style="max-width: 100%;"></a></p>
+<h3>9、韭菜盒子</h3>
+<p>大家如果平时也买买基金和股票，上班又不好一直看手机，推荐安装个韭菜盒子，一边写代码一边看股票</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7242dfd0db977838f9478e6fbfdc7685b0e9e28f1507aa9877067d2519a80692/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d39343639306139626166316561376364353362653035303536323936643935645f722e6a7067"><img src="https://camo.githubusercontent.com/7242dfd0db977838f9478e6fbfdc7685b0e9e28f1507aa9877067d2519a80692/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d39343639306139626166316561376364353362653035303536323936643935645f722e6a7067" alt="" data-canonical-src="https://pic2.zhimg.com/v2-94690a9baf1ea7cd53be05056296d95d_r.jpg" style="max-width: 100%;"></a></p>
+<p>安装之后，你的 vscode 左侧会多出一个图标，点击它添加自己关注的基金和股票</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/67684595d660604a9fe12e24e4c3fc04b56c0eefcedb4ece1a1496e130c7ec15/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d38346338396434306231646334626232323565393266333135346562343035355f722e6a7067"><img src="https://camo.githubusercontent.com/67684595d660604a9fe12e24e4c3fc04b56c0eefcedb4ece1a1496e130c7ec15/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d38346338396434306231646334626232323565393266333135346562343035355f722e6a7067" alt="" data-canonical-src="https://pic2.zhimg.com/v2-84c89d40b1dc4bb225e92f3154eb4055_r.jpg" style="max-width: 100%;"></a></p>
+<p>设置同步</p>
+<p>花了一天终于把 vscode 配置成自己满意的样子，如果每换一次电脑就要重新来一次，大家一定会手撕了我。放心，早就帮大家准备好了。Settings Sync，在不同电脑间同步你的插件。</p>
+<p>首先要想在不同的设备间同步你的插件, 需要用到 Token 和 Gist id</p>
+<p>Token 就是你把插件上传到 github 上时, 让你保存的那段字符，Gist id 在你上传插件的那台电脑上保存着。</p>
+<p>先给大家来三个快捷键，后面会用到</p>
+<pre class="notranslate"><code class="notranslate">1、CTRL+SHIFT+P 我也不知道叫什么，暂且就叫它功能搜索功能吧
+2、ALT+SHIFT+D 下载配置
+3、ALT+SHIFT+U 上传配置
+</code></pre>
+<p>现在手把手教大家配置：</p>
+<p>1、安装 Settings Sync<br>
+2、登陆 Github&gt;settings&gt;Developer settings&gt;personal access tokens&gt;generate new token，输入名称，勾选 Gist，提交</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c680bf26f0ff2e62060535b6f42d625e04e91b6c2ba751b05ea99b49d502766c/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d39383938653964316439306532323766646236646138386138323962303164325f722e6a7067"><img src="https://camo.githubusercontent.com/c680bf26f0ff2e62060535b6f42d625e04e91b6c2ba751b05ea99b49d502766c/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d39383938653964316439306532323766646236646138386138323962303164325f722e6a7067" alt="" data-canonical-src="https://pic3.zhimg.com/v2-9898e9d1d90e227fdb6da88a829b01d2_r.jpg" style="max-width: 100%;"></a></p>
+<p>3、保存 Github Access Token<br>
+4、打开 vscode，Ctrl+Shift+P 打开命令框 --&gt; 输入 sync--&gt; 选择高级设置 --&gt; 编辑本地扩展设置 --&gt; 编辑 token</p>
+<p>5、Ctrl+Shift+P 打开命令框 --&gt; 输入 sync--&gt; 找到 update/upload settings，上传成功后会返回 Gist ID，保存此 Gist ID.</p>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5bc45e259a1ee185db18d99bc7061b497aa3fd23e0daf8c5acd42955e77433b2/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d37366165306664366230376335633739343966633361366530326466663263315f622e6a7067"><img src="https://camo.githubusercontent.com/5bc45e259a1ee185db18d99bc7061b497aa3fd23e0daf8c5acd42955e77433b2/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d37366165306664366230376335633739343966633361366530326466663263315f622e6a7067" alt="" data-canonical-src="https://pic2.zhimg.com/v2-76ae0fd6b07c5c7949fc3a6e02dff2c1_b.jpg" style="max-width: 100%;"></a></p>
+<p>6、在 VSCode 里，依次打开: 文件 -&gt; 首选项 -&gt; 设置，然后输入 Sync 进行搜索: 能找到你 gist id</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2d71ad2d0e612935d84d2069d50d17eac5a2cc3174708c07e49d0519bf49ee0b/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d38363531356266643465356161646132376337663939386463646166316466615f722e6a7067"><img src="https://camo.githubusercontent.com/2d71ad2d0e612935d84d2069d50d17eac5a2cc3174708c07e49d0519bf49ee0b/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d38363531356266643465356161646132376337663939386463646166316466615f722e6a7067" alt="" data-canonical-src="https://pic3.zhimg.com/v2-86515bfd4e5aada27c7f998dcdaf1dfa_r.jpg" style="max-width: 100%;"></a></p>
+<p>7、若需在其他机器上 DownLoad 插件的话，同样，Ctrl+Shift+P 打开命令框，输入 sync，找到 Download settings，会跳转到 Github 的 Token 编辑界面，点 Edit，regenerate token，保存新生成的 token，在 vscode 命令框中输入此 Token，回车，再输入之前的 Gist ID，即可同步插件和设置</p>
+<p>开启一个本地服务</p>
+<p><strong>第一种方式</strong></p>
+<ol>
+<li>安装 Debugger for Chrome 插件</li>
+</ol>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a0983e1840614e7c9dac9a2b94814306da1d020fc6a11632cc98ebe1239b62e8/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d38306130313038643035303039333837663235376439623730323236633363345f722e6a7067"><img src="https://camo.githubusercontent.com/a0983e1840614e7c9dac9a2b94814306da1d020fc6a11632cc98ebe1239b62e8/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d38306130313038643035303039333837663235376439623730323236633363345f722e6a7067" alt="" data-canonical-src="https://pic1.zhimg.com/v2-80a0108d05009387f257d9b70226c3c4_r.jpg" style="max-width: 100%;"></a></p>
+<ol start="2">
+<li>
+<p>使用 ctrl+` 快捷键打开终端，然后输入 npm install -g live-server</p>
+</li>
+<li>
+<p>在命令行里输入 live-server 即可</p>
+</li>
+</ol>
+<p><strong>第二种方式</strong></p>
+<p>在写前端页面中，经常会在浏览器运行 HTML 页面，从本地文件夹中直接打开的一般都是 file 协议，当代码中存在 http 或 https 的链接时，HTML 页面就无法正常打开，为了解决这种情况，需要在在本地开启一个本地的服务器。 本文是利用 node.js 中的 http-server，开启本地服务，步骤如下：</p>
+<p><em>1. 安装 http-server</em></p>
+<p>在终端输入： $ npm install http-server -g</p>
+<p><em>2. 开启 http-server 服务</em></p>
+<p>终端进入目标文件夹，然后在终端输入：</p>
+<pre class="notranslate"><code class="notranslate">$ http-server -c-1   （⚠️只输入http-server的话，更新了代码后，页面不会同步更新）
+Starting up http-server, serving ./
+Available on:
+  http://127.0.0.1:8080
+  http://192.168.8.196:8080
+Hit CTRL-C to stop the server
+</code></pre>
+<p><em>3. 关闭 http-server 服务</em></p>
+<p>按快捷键 CTRL-C 终端显示 ^Chttp-server stopped. 即关闭服务成功。</p>
+<p>如果有什么技术问题，可以进群一块交流！</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://Guo233333333.github.io/patrickguo.github.io">Patrick's Blog</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Guo233333333/patrickguo.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
