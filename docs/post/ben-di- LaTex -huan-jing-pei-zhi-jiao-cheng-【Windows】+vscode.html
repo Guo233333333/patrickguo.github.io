@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="### 安装 LaTex 发行版
+
+LaTex 是基于 TeX 语言拓展的一组宏集（我理解为一个 LaTex 的命令可能集成了多个 TeX 的命令）。">
+<meta property="og:title" content="本地 LaTex 环境配置教程【Windows】+vscode">
+<meta property="og:description" content="### 安装 LaTex 发行版
+
+LaTex 是基于 TeX 语言拓展的一组宏集（我理解为一个 LaTex 的命令可能集成了多个 TeX 的命令）。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://Guo233333333.github.io/patrickguo.github.io/post/ben-di-%20LaTex%20-huan-jing-pei-zhi-jiao-cheng-%E3%80%90Windows%E3%80%91%2Bvscode.html">
+<meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
+<title>本地 LaTex 环境配置教程【Windows】+vscode</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">本地 LaTex 环境配置教程【Windows】+vscode</h1>
+<div class="title-right">
+    <a href="https://Guo233333333.github.io/patrickguo.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Guo233333333/patrickguo.github.io/issues/7" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h3>安装 LaTex 发行版</h3>
+<p>LaTex 是基于 TeX 语言拓展的一组宏集（我理解为一个 LaTex 的命令可能集成了多个 TeX 的命令）。<br>
+而不同的人可能会去实现不同的 TeX 宏集，并且都做的十分出色。因此就有不同的 Latex 发行版这一说。<br>
+当前常见的 LaTex 发行版有 [<a href="https://miktex.org/download" rel="nofollow">MiKTeX</a>](<a href="https://miktex.org/download)%E3%80%81%5B%5BTeXLive%5D(https://tug.org/texlive/acquire-netinstall.html)%5D(https://tug.org/texlive/acquire-netinstall.html" rel="nofollow">https://miktex.org/download)、[[TeXLive](https://tug.org/texlive/acquire-netinstall.html)](https://tug.org/texlive/acquire-netinstall.html</a>) 和 [<a href="https://www.tug.org/mactex/mactex-download.html" rel="nofollow">MacTeX</a>](<a href="https://www.tug.org/mactex/mactex-download.html)%EF%BC%8C%E6%9C%AC%E6%95%99%E7%A8%8B%E5%B0%B1%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85" rel="nofollow">https://www.tug.org/mactex/mactex-download.html)，本教程就选择安装</a> <strong>TeXLive</strong> 作为示例。</p>
+<h4>下载</h4>
+<ul>
+<li>下载地址 1- [<a href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/" rel="nofollow">清华镜像</a>](<a href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/" rel="nofollow">https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/</a>)</li>
+<li>下载地址 2 - 阿里云盘</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1980a6a534fe635130a27c0a63bc983c119ceffef35c237058af34740b725139/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f65343237363665646431323633663931336164363162386663343238653336612e6a706567"><img src="https://camo.githubusercontent.com/1980a6a534fe635130a27c0a63bc983c119ceffef35c237058af34740b725139/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f65343237363665646431323633663931336164363162386663343238653336612e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/e42766edd1263f913ad61b8fc428e36a.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h4>安装</h4>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/84b7f04eb7e9fbdea53f7a4c18d1bb877fde84177dd1233d515e9d43ed4ef57b/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f34636331633738633133383435663837643133376661653431353130336265662e706e67"><img src="https://camo.githubusercontent.com/84b7f04eb7e9fbdea53f7a4c18d1bb877fde84177dd1233d515e9d43ed4ef57b/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f34636331633738633133383435663837643133376661653431353130336265662e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/4cc1c78c13845f87d137fae415103bef.png" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/065627b19ced915f84ed357af144f5c56103257580707d6bc09d76746f647595/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f32386563616435306637613365666161366664646537366466633331393137392e706e67"><img src="https://camo.githubusercontent.com/065627b19ced915f84ed357af144f5c56103257580707d6bc09d76746f647595/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f32386563616435306637613365666161366664646537366466633331393137392e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/28ecad50f7a3efaa6fdde76dfc319179.png" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/604a4166cab40f8f657922bdbd544c3ac03dc7b084dc2f19bcd22c6b8d29934b/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31356666656461386562353639306430666162313366336137623466653736312e706e67"><img src="https://camo.githubusercontent.com/604a4166cab40f8f657922bdbd544c3ac03dc7b084dc2f19bcd22c6b8d29934b/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31356666656461386562353639306430666162313366336137623466653736312e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/15ffeda8eb5690d0fab13f3a7b4fe761.png" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/cc394eb94f38ff62ad4e5b69cd7a328237e10e23753cd64fc2e59c9a869be19b/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f62366332363662353235353739323531326463323030306565386332653633642e706e67"><img src="https://camo.githubusercontent.com/cc394eb94f38ff62ad4e5b69cd7a328237e10e23753cd64fc2e59c9a869be19b/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f62366332363662353235353739323531326463323030306565386332653633642e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/b6c266b5255792512dc2000ee8c2e63d.png" style="max-width: 100%;"></a></p>
+</blockquote>
+<h4>测试</h4>
+<p>使用命令<code class="notranslate">latex -v</code>,<code class="notranslate">xelatex -v</code>,<code class="notranslate">pdflatex -v</code>验证安装是否成功</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/edd34a0801ee6a8620308eabc7c504a9cd5cf0140c8f0e7e2671e0f5d4813bf7/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31353166626331656338633935613563663138396334356463633637353438662e706e67"><img src="https://camo.githubusercontent.com/edd34a0801ee6a8620308eabc7c504a9cd5cf0140c8f0e7e2671e0f5d4813bf7/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31353166626331656338633935613563663138396334356463633637353438662e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/151fbc1ec8c95a5cf189c45dcc67548f.png" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c65f0b61d367ce4e8239c32f658bb0da847b773ff0233f13e9fd0e7391aa5dd9/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f62633839663266393761393830313737326331323532356636386464353537302e706e67"><img src="https://camo.githubusercontent.com/c65f0b61d367ce4e8239c32f658bb0da847b773ff0233f13e9fd0e7391aa5dd9/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f62633839663266393761393830313737326331323532356636386464353537302e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/bc89f2f97a9801772c12525f68dd5570.png" style="max-width: 100%;"></a></p>
+</blockquote>
+<h3>安装 Visual Studio Code</h3>
+<p>Visual Studio Code(VScode) 是微软开源的一款轻量级跨平台编辑器，可以通过安装不同的插件实现高效的代码编辑。</p>
+<h4>下载</h4>
+<ul>
+<li>下载地址 1- [<a href="https://code.visualstudio.com/#alt-downloads" rel="nofollow">官网</a>](<a href="https://code.visualstudio.com/#alt-downloads" rel="nofollow">https://code.visualstudio.com/#alt-downloads</a>)</li>
+<li>下载地址 2 - 阿里云盘</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4171ea30bdb95b0d60937fcd3b71710b3455a9d626ae3ef27a576afec8211f7e/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f36353264646139636363643130323762623062613262643336653937316262652e706e67"><img src="https://camo.githubusercontent.com/4171ea30bdb95b0d60937fcd3b71710b3455a9d626ae3ef27a576afec8211f7e/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f36353264646139636363643130323762623062613262643336653937316262652e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/652dda9cccd1027bb0ba2bd36e971bbe.png" style="max-width: 100%;"></a></p>
+</blockquote>
+<h4>安装</h4>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/e495ccd4a6a7c85a40a7f209c290a62cdd1f1129423f028fbe3406af3fcc7d54/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f36633536313463383831303038343830373032616333663730633832343264642e706e67"><img src="https://camo.githubusercontent.com/e495ccd4a6a7c85a40a7f209c290a62cdd1f1129423f028fbe3406af3fcc7d54/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f36633536313463383831303038343830373032616333663730633832343264642e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/6c5614c881008480702ac3f70c8242dd.png" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a0277868400ec9eb14f4d80c433aaabf02f993e83d746bac01435d64295d3658/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f34356664643539613635653237366632376231623231393334383633376261372e706e67"><img src="https://camo.githubusercontent.com/a0277868400ec9eb14f4d80c433aaabf02f993e83d746bac01435d64295d3658/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f34356664643539613635653237366632376231623231393334383633376261372e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/45fdd59a65e276f27b1b219348637ba7.png" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1b77a56178f5442abd9c01bbc0a0dcd9b41393e2b94ef5059d2e69a94a712f85/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31366332373763363738326232653063613161643139626433316639336434312e706e67"><img src="https://camo.githubusercontent.com/1b77a56178f5442abd9c01bbc0a0dcd9b41393e2b94ef5059d2e69a94a712f85/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31366332373763363738326232653063613161643139626433316639336434312e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/16c277c6782b2e0ca1ad19bd31f93d41.png" style="max-width: 100%;"></a></p>
+</blockquote>
+<h3>VScode 中配置 LaTex 编译</h3>
+<p>VScode 中有一个 LaTex Workshop 插件，可以实现对 LaTex 编辑的支持。</p>
+<h4>安装 LaTex Workshop 插件</h4>
+<blockquote>
+<p>未安装插件前的效果:<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1a9fcfcb34c5842a8277e4314c830584bdaffe77cd3f05e123c632acd1312377/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f64633237313130383763633930343239623265316264346466633530343430332e706e67"><img src="https://camo.githubusercontent.com/1a9fcfcb34c5842a8277e4314c830584bdaffe77cd3f05e123c632acd1312377/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f64633237313130383763633930343239623265316264346466633530343430332e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/dc2711087cc90429b2e1bd4dfc504403.png" style="max-width: 100%;"></a></p>
+</blockquote>
+<h5>在 VScode 的拓展中搜索 LaTex Workshop 插件并安装</h5>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/98095508991c511de6a6f0d31165d60556994b7e76ff7d150cc54664aee04602/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f36656436316466323734303134633432663337366432343136306462396332302e706e67"><img src="https://camo.githubusercontent.com/98095508991c511de6a6f0d31165d60556994b7e76ff7d150cc54664aee04602/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f36656436316466323734303134633432663337366432343136306462396332302e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/6ed61df274014c42f376d24160db9c20.png" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0a8d2bfe74320aa56d89eb0ba99ce4239fbdbe59d774ec1e6894aea17f8cc062/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f61666637373133346666376564313531313635306462316330653936613739302e706e67"><img src="https://camo.githubusercontent.com/0a8d2bfe74320aa56d89eb0ba99ce4239fbdbe59d774ec1e6894aea17f8cc062/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f61666637373133346666376564313531313635306462316330653936613739302e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/aff77134ff7ed1511650db1c0e96a790.png" style="max-width: 100%;"></a></p>
+</blockquote>
+<blockquote>
+<p>安装后效果：<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/113d46bad144ed6bed184464c0b8932a77042fcf305b5603a8718546fdf93323/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f64643735306262336339626262373539643533356532383132333266633037632e6a706567"><img src="https://camo.githubusercontent.com/113d46bad144ed6bed184464c0b8932a77042fcf305b5603a8718546fdf93323/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f64643735306262336339626262373539643533356532383132333266633037632e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/dd750bb3c9bbb759d535e281232fc07c.jpeg" style="max-width: 100%;"></a><br>
+在拓展栏出现了 <strong>TEX</strong> 标志，并且语法出现高亮</p>
+</blockquote>
+<h4>配置 LaTex Workshop 插件</h4>
+<p>为了更好的在 VScode 中使用 LaTex，我们需要对 LaTex Workshop 插件进行一些配置。</p>
+<h5>在 VScode 中使用快捷键<code class="notranslate">Ctrl+Shift+P</code>并在搜索框内输入<code class="notranslate">Preferences:Open Settings(JSON)</code></h5>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0d385db7aaeeacbebba470165bd7155397913c21a7190814bb34cc4fd6a65d63/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f32613739366563346139396136306338333333316435653261373636653832322e6a706567"><img src="https://camo.githubusercontent.com/0d385db7aaeeacbebba470165bd7155397913c21a7190814bb34cc4fd6a65d63/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f32613739366563346139396136306338333333316435653261373636653832322e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/2a796ec4a99a60c83331d5e2a766e822.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h5>添加配置</h5>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1b84a4ffb779155201bec1155af85088bd05b85a43978c289c8323471c4610b5/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f32613735646131643036643164343437613864663031366339363563303336662e6a706567"><img src="https://camo.githubusercontent.com/1b84a4ffb779155201bec1155af85088bd05b85a43978c289c8323471c4610b5/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f32613735646131643036643164343437613864663031366339363563303336662e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/2a75da1d06d1d447a8df016c965c036f.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h5>配置如下</h5>
+<p>!!! 注意，如果原先的 setting.json 内有配置参数，则需要把下面的配置删除最外层 <strong>{ }</strong> 删除后添加至原先的 <strong>{ }</strong> 内。</p>
+<pre class="notranslate"><code class="notranslate">{
+      // Latex workshop
+
+    "latex-workshop.latex.tools": [
+      {
+        "name": "latexmk",
+        "command": "latexmk",
+        "args": [
+        "-shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "%DOC%"
+        ]
+      },
+      {
+        "name": "xelatex",
+        "command": "xelatex",
+        "args": [
+        "-shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+          ]
+      },          
+      {
+        "name": "pdflatex",
+        "command": "pdflatex",
+        "args": [
+        "-shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+        ]
+      },
+      {
+        "name": "bibtex",
+        "command": "bibtex",
+        "args": [
+        "%DOCFILE%"
+        ]
+      }
+    ],
+    "latex-workshop.latex.recipes": [
+      {
+        "name": "xelatex",
+        "tools": [
+        "xelatex"
+        ]
+      },
+      {
+        "name": "pdflatex",
+        "tools": [
+            "pdflatex"
+        ]
+      },
+      {
+        "name": "latexmk",
+        "tools": [
+        "latexmk"
+        ]
+      },
+      {
+        "name": "pdflatex -&gt; bibtex -&gt; pdflatex*2",
+        "tools": [
+        "pdflatex",
+        "bibtex",
+        "pdflatex",
+        "pdflatex"
+        ]
+      },
+      {
+        "name": "xelatex -&gt; bibtex -&gt; xelatex*2",
+        "tools": [
+        "xelatex",
+        "bibtex",
+        "xelatex",
+        "xelatex"
+        ]
+      }],
+    "latex-workshop.view.pdf.viewer": "tab",  
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.latex.clean.fileTypes": [
+        "chapters/*.aux",
+        "misc/*.aux",
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk"
+      ],
+    "latex-workshop.message.update.show": false,
+    "editor.fontSize": 18,
+    "files.autoSave": "afterDelay",
+    "window.zoomLevel": 1
+ }
+</code></pre>
+<h5>配置属性的一些解释</h5>
+<blockquote>
+<ol>
+<li><code class="notranslate">latex-workshop.latex.tools</code> 在编译过程中需要使用到的编译命令，默认就行，不需要进行修改</li>
+<li><code class="notranslate">latex-workshop.latex.recipes</code> 此串代码是对编译链进行定义，其中 name 是标签，也就是出现在工具栏中的链名称；tools 是 name 标签所对应的编译顺序，其内部编译命令来自上文 latex-workshop.latex.tools 中内容</li>
+<li><code class="notranslate">latex-workshop.latex.autoClean.run</code> 定义在编译过程中是否需要清除过程文件</li>
+<li><code class="notranslate">latex-workshop.latex.clean.fileTypes</code> 配合上一个配置使用，表示需要清除的文件类型</li>
+</ol>
+</blockquote>
+<h5>编译链的解释</h5>
+<p>一般我们在使用 LaTex 写文献的时候，会涉及到论文引用这方面的问题，而一般的方式是使用 <strong>BibTex</strong><br>
+如果说我们的内容不包含文献，其实只用 <strong>xelatex</strong> 或 <strong>pdflatex</strong> 就足够将文本编译成 pdf 文件了<br>
+但一般我们使用 LaTex 的目的还是写论文，因此肯定逃不开使用 <strong>BibTex</strong>，而使用 <strong>BibTex</strong> 就需要多次编译<br>
+而一般的流程就是 <strong>xelatex → \to → bibtex → \to → xelatex → \to → xelatex</strong> 或者 <strong>pdflatex → \to → bibtex → \to → pdflatex → \to → pdflatex</strong><br>
+具有的过程在[<a href="https://blog.csdn.net/huitailangyz/article/details/99685683" rel="nofollow">这篇文章</a>](<a href="https://blog.csdn.net/huitailangyz/article/details/99685683)%E4%B8%AD%E6%9C%89%E4%BB%8B%E7%BB%8D%EF%BC%8C%E6%9C%89%E5%85%B4%E8%B6%A3%E5%8F%AF%E4%BB%A5%E7%9C%8B%E4%B8%80%E4%B8%8B%E3%80%82" rel="nofollow">https://blog.csdn.net/huitailangyz/article/details/99685683)中有介绍，有兴趣可以看一下。</a><br>
+<code class="notranslate">Tip:</code> <strong>xelatex</strong> 或 <strong>pdflatex</strong> 的区别在于如果内容中有中文，需要引入中文支持的包并只能使用 <strong>xelatex</strong> 编译</p>
+<h4>使用 LaTex Workshop 插件</h4>
+<p>进行上述配置以后，我们就可以在 VScode 拓展面板看到我们所配置的结果</p>
+<blockquote>
+<p>在 <strong>COMMANDS</strong> 中有五种不同的编译链，对应我们在<code class="notranslate">latex-workshop.latex.recipes</code>下的配置<br>
+SNIPPET VIEW 中提供了 LeTax 的公式编辑帮助，点击其中的符号就可以在 tex 文本中直接添加<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/328fff5ce1f01ed91f8e83463c705e55ff440f8948442a011458d7cbb269114e/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31356333343932393163306430373063313964376161373738626364613034652e6a706567"><img src="https://camo.githubusercontent.com/328fff5ce1f01ed91f8e83463c705e55ff440f8948442a011458d7cbb269114e/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31356333343932393163306430373063313964376161373738626364613034652e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/15c349291c0d070c19d7aa778bcda04e.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h5>使用定义好的编译链编译. tex 文件</h5>
+<p>示例的 CVPR 模板可以从我的阿里云下载：下载地址<br>
+首先选中并打开需要编译的. tex 文件</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/6db407d07bf716a374180aab3a8dbd28bc480abb42d421cd953cb20366c19a8b/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f37666138336164373462656361333363643333363234373764616261306562632e6a706567"><img src="https://camo.githubusercontent.com/6db407d07bf716a374180aab3a8dbd28bc480abb42d421cd953cb20366c19a8b/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f37666138336164373462656361333363643333363234373764616261306562632e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/7fa83ad74beca33cd3362477daba0ebc.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<p>然后打开 VScode 拓展栏中的 TEX<br>
+在 <strong>COMMANDS</strong> 选择 <strong>xelatex → \to → bibtex → \to → xelatex → \to → xelatex</strong> 或者 <strong>xelatex → \to → bibtex → \to → xelatex → \to → xelatex</strong><br>
+单击后，tex 文件便会被编译成 pdf</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4d9baf1a17bfdac4fbd10499cc8f338fbc3821be9c41ad63d0b0dc99822de7a3/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f61623438336666663931323235666338376235346662316263613439363562352e6a706567"><img src="https://camo.githubusercontent.com/4d9baf1a17bfdac4fbd10499cc8f338fbc3821be9c41ad63d0b0dc99822de7a3/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f61623438336666663931323235666338376235346662316263613439363562352e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/ab483fff91225fc87b54fb1bca4965b5.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<p>编译后效果</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d415c63909310e2b01b9d95a361790d00aec287297a6d0a7a2007c17f1bcc1cb/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31616263613937386165636231376165643334636366376335313535336237652e6a706567"><img src="https://camo.githubusercontent.com/d415c63909310e2b01b9d95a361790d00aec287297a6d0a7a2007c17f1bcc1cb/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31616263613937386165636231376165643334636366376335313535336237652e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/1abca978aecb17aed34ccf7c51553b7e.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h3>LaTex 基础</h3>
+<h4>文档的基本结构</h4>
+<p>一般的文本结构如下，标识是以 <code class="notranslate">\</code>开头的<br>
+在<code class="notranslate">\begin{document}</code>后，在标识与标识之间填写的内容会属于开始的标识<br>
+例如，<strong>Zzbro1</strong> 属于第一节的内容，<strong>Zzbro1~1</strong> 属于第一节的第一子节</p>
+<pre class="notranslate"><code class="notranslate">%文档的类型
+\documentclass{article}
+%导入需要用的宏包，不限制数量
+\usepackage{amsmath}
+
+%内容开始-只有以下内容会出现在最终的pdf文档中
+\begin{document}
+%节的标识
+\section{First}
+Zzbro1
+%子节的标识
+\subsection{One}
+Zzbro1~1
+\subsection{Two}
+Zzbro1~2
+\section{Seconde}
+Zzbro2
+\section{Third}
+Zzbro3
+
+\end{document}
+%内容结束
+</code></pre>
+<p>使用 <strong>xelatex</strong> 或 <strong>pdflatex</strong> 进行编译，结果如下</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/046eff2d7c035214be558bb292aebd0e0a111b7c03c3dad1e235bb155365cadc/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f30666636383930353661656636643136303465336331393636386630336666352e6a706567"><img src="https://camo.githubusercontent.com/046eff2d7c035214be558bb292aebd0e0a111b7c03c3dad1e235bb155365cadc/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f30666636383930353661656636643136303465336331393636386630336666352e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/0ff689056aef6d1604e3c19668f03ff5.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h4>向文档中插入图片</h4>
+<p>这个时候需要导入 <strong>graphicx</strong> 宏包来支持插入图片，使用命令<code class="notranslate">\usepackage{graphicx}</code><br>
+插入图片的基本结构如下</p>
+<pre class="notranslate"><code class="notranslate">%图片的标识
+\begin{figure}
+    %居中
+    \begin{center}
+        %插入图片，{}内是图片的名字，！！！路径需要填写以tex文件所在路径的相对位置
+        \includegraphics{clock.png}
+    \end{center}
+    %图片描述信息，一般论文就是图名和描述图的内容
+    \caption{
+        A clock
+    }
+    %为这张图打上一个标签，方便在其他地方引用
+    \label{fig:overview}
+\end{figure}
+</code></pre>
+<p>带图片的示例文档</p>
+<pre class="notranslate"><code class="notranslate">%文档的类型
+\documentclass{article}
+%导入需要用的宏包，不限制数量
+\usepackage{amsmath}
+\usepackage{graphicx}
+%内容开始-只有以下内容会出现在最终的pdf文档中
+\begin{document}
+%图片的标识
+\begin{figure}
+    %居中
+    \begin{center}
+        %插入图片，{}内是图片的名字
+        \includegraphics{clock.png}
+    \end{center}
+    %图片描述信息，一般论文就是图名和描述图的内容
+    \caption{
+        A clock
+    }
+    %为这张图打上一个标签，方便在其他地方引用
+    \label{fig:overview}
+\end{figure}
+%节的标识
+\section{First}
+Zzbro1
+%子节的标识
+\subsection{One}
+Zzbro1~1
+\subsection{Two}
+Zzbro1~2
+\section{Seconde}
+Zzbro2
+\section{Third}
+Zzbro3
+
+\end{document}
+%内容结束
+</code></pre>
+<p>使用 <strong>xelatex</strong> 或 <strong>pdflatex</strong> 进行编译，结果如下</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/41875904454291b25f9ae3e2e827dd96fb5b8f094dc3fe5312d34b6e94ff243f/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f36356264313736363866326261316132393261626232646139373165343266302e6a706567"><img src="https://camo.githubusercontent.com/41875904454291b25f9ae3e2e827dd96fb5b8f094dc3fe5312d34b6e94ff243f/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f36356264313736363866326261316132393261626232646139373165343266302e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/65bd17668f2ba1a292abb2da971e42f0.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h4>向文档中插入表格</h4>
+<p>表格内容的基本格式，其中<code class="notranslate">\begin{tabular}</code>后的<code class="notranslate">lc</code>表示第一列内容左对齐，第二列内容居中对齐</p>
+<pre class="notranslate"><code class="notranslate">%表的标识
+\begin{table}
+    %居中
+    \centering
+    %表的内容开始标识
+    \begin{tabular}{lc}
+        Method &amp; Frobnability\\
+        Ours v0 &amp; Frumpy \\
+        Ours v1 &amp; Frobbly \\
+        Ours &amp; Makes one's heart Frob\\
+    \end{tabular}
+    %表描述信息，一般论文就是表名和描述表的内容
+    \caption{
+        \textbf{Ablations} -- our decisions are well justified.
+    }
+    %为这个表打上一个标签，方便在其他地方引用
+    \label{tab:ablations}
+\end{table}
+</code></pre>
+<p>添加至文档 <strong>\begin{document}</strong> 之后使用 <strong>xelatex</strong> 或 <strong>pdflatex</strong> 进行编译，结果如下：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/02fac61b729563f1c8f8f4ab525c9edb189881e19dd9a2cf4480f5d885108ff4/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f32333365396666653135383831393939613638643535323638366564396430622e706e67"><img src="https://camo.githubusercontent.com/02fac61b729563f1c8f8f4ab525c9edb189881e19dd9a2cf4480f5d885108ff4/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f32333365396666653135383831393939613638643535323638366564396430622e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/233e9ffe15881999a68d552686ed9d0b.png" style="max-width: 100%;"></a></p>
+</blockquote>
+<h4>向文档中插入公式</h4>
+<p>文档中使用公式需要使用<code class="notranslate">\usepackage{amsmath}</code>命令添加 <strong>amsmath</strong> 包<br>
+公式嵌入的两种方式基础结构如下</p>
+<pre class="notranslate"><code class="notranslate">% 行内嵌入公式，使用 $ $ 标识公式的开始与结束 
+Zzbro1~1$N=2022$
+% 行间嵌入公式，使用如下标识
+\begin{equation}
+    \int_{a}^{b}  \,dx 
+\end{equation}
+</code></pre>
+<p>使用 <strong>xelatex</strong> 或 <strong>pdflatex</strong> 进行编译，结果如下：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/32b88cd7b3d80cfd59d5e4f93e92ec45838a8703e49b00f32afb6b77446f1dd3/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f36663534633235373366633134373138363739383864386661323033633065622e6a706567"><img src="https://camo.githubusercontent.com/32b88cd7b3d80cfd59d5e4f93e92ec45838a8703e49b00f32afb6b77446f1dd3/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f36663534633235373366633134373138363739383864386661323033633065622e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/6f54c2573fc1471867988d8fa203c0eb.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h4>引用文本内容</h4>
+<p>我们在图片和表的结构中都添加了<code class="notranslate">\label{}</code>标识，那么对于添加了这些标识的内容，我们可以在文档的任意部分进行引用<br>
+但在<strong>单命令</strong>编译链编译过程中，我们需要修改配置文件的<code class="notranslate">latex-workshop.latex.clean.fileTypes</code>，将<code class="notranslate">"*.aux",</code>使用<code class="notranslate">//</code>注释掉<br>
+示例</p>
+<pre class="notranslate"><code class="notranslate">% 使用\ref{}就可以引用被打标签的部分
+\section{Seconde}
+Zzbro2\ref{fig:overview}
+\section{Third}
+Zzbro3\ref{tab:ablations}
+</code></pre>
+<p>使用 <strong>xelatex</strong> 或 <strong>pdflatex</strong> 进行<strong>两次</strong>编译，结果如下：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1a84c6a40377e3489f6436531ead2f51dd96370738ff2f9ff23fa0677318ea9e/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f63353265353437336463646532346532323730643534363331363466373231612e6a706567"><img src="https://camo.githubusercontent.com/1a84c6a40377e3489f6436531ead2f51dd96370738ff2f9ff23fa0677318ea9e/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f63353265353437336463646532346532323730643534363331363466373231612e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/c52e5473dcde24e2270d5463164f721a.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h4>小结</h4>
+<p>使用 LaTex 进行写作时，用<code class="notranslate">\begin{} \end{}</code> 这样的结构所标识的内容会自动编号，例如 <strong>Figure 1</strong>、<strong>Table 1</strong> 和公式的编号 <strong>(1)</strong></p>
+<h5>文档的示例结构如下</h5>
+<pre class="notranslate"><code class="notranslate">%文档的类型
+\documentclass{article}
+%导入需要用的宏包，不限制数量
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+%内容开始-只有以下内容会出现在最终的pdf文档中
+\begin{document}
+%图片的标识
+\begin{figure}
+    %居中
+    \begin{center}
+        %插入图片，{}内是图片的名字
+        \includegraphics{clock.png}
+    \end{center}
+    %图片描述信息，一般论文就是图名和描述图的内容
+    \caption{
+        A clock
+    }
+    %为这张图打上一个标签，方便在其他地方引用
+    \label{fig:overview}
+\end{figure}
+%节的标识
+\section{First}
+Zzbro1
+%子节的标识
+\subsection{One}
+% 行内嵌入公式，使用 $ $ 标识公式的开始与结束 
+Zzbro1~1$N=2022$
+
+% 行间嵌入公式，使用如下标识
+\begin{equation}
+    \int_{a}^{b}  \,dx 
+\end{equation}
+
+\subsection{Two}
+Zzbro1~2
+%表的标识
+\begin{table}
+    %居中
+    \centering
+    %表的内容开始标识
+    \begin{tabular}{@{}lc@{}}
+        Method &amp; Frobnability\\
+        Ours v0 &amp; Frumpy \\
+        Ours v1 &amp; Frobbly \\
+        Ours &amp; Makes one's heart Frob\\
+    \end{tabular}
+    %表描述信息，一般论文就是表名和描述表的内容
+    \caption{
+        \textbf{Ablations} -- our decisions are well justified.
+    }
+    %为这个表打上一个标签，方便在其他地方引用
+    \label{tab:ablations}
+\end{table}
+
+\section{Seconde}
+%引用\ref{}
+Zzbro2 - fig\ref{fig:overview}
+\section{Third}
+Zzbro3 - tab\ref{tab:ablations}
+
+\end{document}
+%内容结束
+</code></pre>
+<h3>LaTex 中使用 bib 管理引用文献</h3>
+<p>可以使用 BibTeX 来管理引用文献我认为是 LaTex 最最方便的功能之一！<br>
+我们需要在 tex 文件的同级目录下新建一个 bib 文件即可，示例中新建的文件为 <strong>test.bib</strong></p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/84da9e0bfef844c0e4a75e4d86d291b73486c54059c12bbe0216fda2b9ee5112/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f34333838626636333063623334323365666239386235303030656261636562342e6a706567"><img src="https://camo.githubusercontent.com/84da9e0bfef844c0e4a75e4d86d291b73486c54059c12bbe0216fda2b9ee5112/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f34333838626636333063623334323365666239386235303030656261636562342e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/4388bf630cb3423efb98b5000ebaceb4.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h4>查找文献的 BibTeX</h4>
+<p>我们以查找《Deep Residual Learning for Image Recognition》这篇论文的 BibTex 为例</p>
+<h5>[<a href="https://xueshu.baidu.com/" rel="nofollow">百度学术</a>](<a href="https://xueshu.baidu.com/" rel="nofollow">https://xueshu.baidu.com/</a>)</h5>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ae28249aef0306efd76e32b3b2743f7a2b6715ad67b98f1215b493e61fdbedce/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f34306230396331643032356233623532326366396163353133336339366363612e6a706567"><img src="https://camo.githubusercontent.com/ae28249aef0306efd76e32b3b2743f7a2b6715ad67b98f1215b493e61fdbedce/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f34306230396331643032356233623532326366396163353133336339366363612e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/40b09c1d025b3b522cf9ac5133c96cca.jpeg" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2937282ffdd536d770577481b07fe8ba34b8c015c8d2594e32fbdce2adda83e2/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f34623330633132636437376261633836613533366539356337393234343736642e6a706567"><img src="https://camo.githubusercontent.com/2937282ffdd536d770577481b07fe8ba34b8c015c8d2594e32fbdce2adda83e2/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f34623330633132636437376261633836613533366539356337393234343736642e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/4b30c12cd77bac86a536e95c7924476d.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h5>[<a href="https://scholar.google.com/schhp?hl=zh-CN&amp;as_sdt=0,5" rel="nofollow">谷歌学术</a>](<a href="https://scholar.google.com/schhp?hl=zh-CN&amp;as_sdt=0,5" rel="nofollow">https://scholar.google.com/schhp?hl=zh-CN&amp;as_sdt=0,5</a>)</h5>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c0db74e1c7eb3ad198ab440e61d0106faad9eb3da7eee51e78fe9352a30969a3/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f33326135313939366635333639306664326438653430376266623838616463642e6a706567"><img src="https://camo.githubusercontent.com/c0db74e1c7eb3ad198ab440e61d0106faad9eb3da7eee51e78fe9352a30969a3/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f33326135313939366635333639306664326438653430376266623838616463642e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/32a51996f53690fd2d8e407bfb88adcd.jpeg" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d24b189217ac1ee9c9e23ece913bc083119108116a4a8b160ad092d06c9cb02c/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f64653166356435316439643364353634343137663633363636373938663535382e6a706567"><img src="https://camo.githubusercontent.com/d24b189217ac1ee9c9e23ece913bc083119108116a4a8b160ad092d06c9cb02c/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f64653166356435316439643364353634343137663633363636373938663535382e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/de1f5d51d9d3d564417f63666798f558.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h5>DBLP</h5>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0f22ad951a25e3378cbd69946539ebe64deef84d261a88a3c84fc74dc9a3c98e/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f35623566663735366136383338613763313032643433376536626162633965662e6a706567"><img src="https://camo.githubusercontent.com/0f22ad951a25e3378cbd69946539ebe64deef84d261a88a3c84fc74dc9a3c98e/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f35623566663735366136383338613763313032643433376536626162633965662e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/5b5ff756a6838a7c102d437e6babc9ef.jpeg" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4ab1014fff5d087e7665b33c77ad81253f48ba8a6f55f2d0d41fbb5a5a5b3438/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31636335363663613239313937643039373334373633393963616430663334302e6a706567"><img src="https://camo.githubusercontent.com/4ab1014fff5d087e7665b33c77ad81253f48ba8a6f55f2d0d41fbb5a5a5b3438/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31636335363663613239313937643039373334373633393963616430663334302e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/1cc566ca29197d0973476399cad0f340.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h4>在文档中插入文献引用</h4>
+<p>我们在不同数据库所查找到的 BibTex 文件可能是不一样的，但都包含了论文的基础信息<br>
+其中，最需要注意的地方就是 BibTex 第一行 <strong>{</strong> 和 <strong>,</strong> 之间的<strong>简称</strong>内容，例如下面的 <strong>2016Deep、He_2016_CVPR、DBLP:conf/cvpr/HeZRS16</strong><br>
+我们在文档中引用文献时，使用的就只是这里定义的<strong>简称</strong>，类似于标签的形式。</p>
+<pre class="notranslate"><code class="notranslate">%百度学术
+@article{2016Deep,
+  title={Deep Residual Learning for Image Recognition},
+  author={ He, K.  and  Zhang, X.  and  Ren, S.  and  Sun, J. },
+  journal={IEEE},
+  year={2016},
+}
+%谷歌学术
+@InProceedings{He_2016_CVPR,
+author = {He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
+title = {Deep Residual Learning for Image Recognition},
+booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+month = {June},
+year = {2016}
+}
+%DBLP
+@inproceedings{DBLP:conf/cvpr/HeZRS16,
+  author    = {Kaiming He and
+               Xiangyu Zhang and
+               Shaoqing Ren and
+               Jian Sun},
+  title     = {Deep Residual Learning for Image Recognition},
+  booktitle = {2016 {IEEE} Conference on Computer Vision and Pattern Recognition,
+               {CVPR} 2016, Las Vegas, NV, USA, June 27-30, 2016},
+  pages     = {770--778},
+  publisher = {{IEEE} Computer Society},
+  year      = {2016},
+  url       = {https://doi.org/10.1109/CVPR.2016.90},
+  doi       = {10.1109/CVPR.2016.90},
+  timestamp = {Wed, 16 Oct 2019 14:14:50 +0200},
+  biburl    = {https://dblp.org/rec/conf/cvpr/HeZRS16.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+</code></pre>
+<p>我们选择上述谷歌学术的 BibTex 填入 <strong>text.bib</strong> 文件中，并在 text.tex 文档中进行引用<br>
+其中需要注意的是，我们引用 BibTex 中的简称需要使用 <code class="notranslate">\cite{}</code> 命令，并且需要在文档的尾部设置引用的类型</p>
+<h5>文档中引用模板的格式</h5>
+<pre class="notranslate"><code class="notranslate">% 引用BibTex中的简称需要使用 \cite{} 命令
+\documentclass{article}
+
+\begin{document}
+
+
+\section{First}
+Zzbro1
+
+\subsection{One}
+
+Zzbro1~1
+
+Reference here\cite{He_2016_CVPR}
+
+\subsection{Two}
+Zzbro1~2
+
+\section{Seconde}
+Zzbro2
+\section{Third}
+Zzbro3
+
+
+%BibTex 样式
+{   
+    %设置BibTex所在的文件，我们这里是test.bib 可简写为test
+    \bibliography{test.bib}
+    %设置BibTexde的样式文件，我们这里是ieee_fullname.bst 可简写为ieee_fullname
+    \bibliographystyle{ieee_fullname}
+}
+
+\end{document}
+</code></pre>
+<p>使用 <strong>pdflatex → \to → bibtex → \to → pdflatex → \to → pdflatex</strong> 编译链编译，结果如下：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/42e071dec1cfeb7a184620403445e9fa1c5ed935ce345aeff2699ddffad66496/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f61306666626561343964343231666434633135343565346232326261353530382e6a706567"><img src="https://camo.githubusercontent.com/42e071dec1cfeb7a184620403445e9fa1c5ed935ce345aeff2699ddffad66496/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f61306666626561343964343231666434633135343565346232326261353530382e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/a0ffbea49d421fd4c1545e4b22ba5508.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h3>LaTex 使用模板写作样例</h3>
+<p>在掌握了上述 LaTex 基础后，使用模板写作相信大家就可以手到擒来了，这里以 CVPR 的模板为例，模板来源于 overleaf</p>
+<h4>模板结构</h4>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7f663b20c1e97211ee9a5a9b90cb7bfc64758761c1e1b5255f9cb9fdb6518e23/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f63323833653666643762366436633233633363326563343733353961383231352e706e67"><img src="https://camo.githubusercontent.com/7f663b20c1e97211ee9a5a9b90cb7bfc64758761c1e1b5255f9cb9fdb6518e23/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f63323833653666643762366436633233633363326563343733353961383231352e706e67" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/c283e6fd7b6d6c23c3c2ec47359a8215.png" style="max-width: 100%;"></a></p>
+<h4>修改步骤</h4>
+<ol>
+<li>在 main.tex 中去掉不需要的内容</li>
+<li>在 main.bib 中将自己需要的参考文献 BibTex 进行添加</li>
+<li>使用 <strong>pdflatex → \to → bibtex → \to → pdflatex → \to → pdflatex</strong> 编译链编译</li>
+</ol>
+<h4>修改示例</h4>
+<h5>在 main.tex 中删除不需要的内容</h5>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5f7fdd1ae65ac5d29bccfbe079caa1f0e0880f84c389f20a1f2a4b2dc87879ec/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f35303765336235323564663436643263393631656561653230393136643533642e6a706567"><img src="https://camo.githubusercontent.com/5f7fdd1ae65ac5d29bccfbe079caa1f0e0880f84c389f20a1f2a4b2dc87879ec/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f35303765336235323564663436643263393631656561653230393136643533642e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/507e3b525df46d2c961eeae20916d53d.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h5>修改不同章节的内容</h5>
+<blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/206a475ffdf69191631fe0fb88bfac5ac6633831090c6ba649fdba3d9fbebe85/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f37376231316631623934653766313530663064353837356362323036333362382e6a706567"><img src="https://camo.githubusercontent.com/206a475ffdf69191631fe0fb88bfac5ac6633831090c6ba649fdba3d9fbebe85/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f37376231316631623934653766313530663064353837356362323036333362382e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/77b11f1b94e7f150f0d5875cb20633b8.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h5>添加参考文献并在正文中引用</h5>
+<blockquote>
+<p>这里将该条引用的简称改为了 <strong>ResNet</strong>，因此在论文中就需要以 <code class="notranslate">\cite{ResNet}</code>来引用<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d7aa4b33d7de89ce969286a53cb53a6c92f35a5d97661f162d1161fdf0b8b2ec/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31383366383339383530306639313864646231333531613836663131313164352e6a706567"><img src="https://camo.githubusercontent.com/d7aa4b33d7de89ce969286a53cb53a6c92f35a5d97661f162d1161fdf0b8b2ec/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f31383366383339383530306639313864646231333531613836663131313164352e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/183f8398500f918ddb1351a86f1111d5.jpeg" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/14d87fcb486f215755ef5d70a4f9544573c643a69d072f4f12ac98ddf8d03ad3/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f37626535623837633564663862633639666464346335373466346532613666332e6a706567"><img src="https://camo.githubusercontent.com/14d87fcb486f215755ef5d70a4f9544573c643a69d072f4f12ac98ddf8d03ad3/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f37626535623837633564663862633639666464346335373466346532613666332e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/7be5b87c5df8bc69fdd4c574f4e2a6f3.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h5>使用 <strong>pdflatex → \to → bibtex → \to → pdflatex → \to → pdflatex</strong> 编译链编译</h5>
+<blockquote>
+<p>这里使用 <strong>pdflatex → \to → bibtex → \to → pdflatex → \to → pdflatex</strong> 编译链，因为存在了 bib 文件<br>
+至于你可能会问为什么不用 <strong>xelatex → \to → bibtex → \to → xelatex → \to → xelatex</strong>，这里可能会报错，也可能不报错。但，<strong>只要能编译成功就不要再纠结用哪个啦</strong>~<br>
+还需要将 main.tex 中的<code class="notranslate">\usepackage[pagenumbers]{cvpr}</code> 和<code class="notranslate">\bibliographystyle{ieee_fullname}</code> 改一下路径<br>
+修改为<code class="notranslate">\usepackage[pagenumbers]{cvpr22/cvpr}</code> 和<code class="notranslate">\bibliographystyle{cvpr22/ieee_fullname}</code><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f50b9d4ac089ec0e35b192ebdd48510d1393bce04e0f3eba7cc1984f0e564fad/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f32366563633234373064613038376163613131393934356637303761323663382e6a706567"><img src="https://camo.githubusercontent.com/f50b9d4ac089ec0e35b192ebdd48510d1393bce04e0f3eba7cc1984f0e564fad/68747470733a2f2f692d626c6f672e6373646e696d672e636e2f626c6f675f6d6967726174652f32366563633234373064613038376163613131393934356637303761323663382e6a706567" alt="" data-canonical-src="https://i-blog.csdnimg.cn/blog_migrate/26ecc2470da087aca119945f707a26c8.jpeg" style="max-width: 100%;"></a></p>
+</blockquote>
+<h3>参考</h3>
+<p>[<a href="https://www.latexstudio.net/archives/51537.html" rel="nofollow">TeX 引擎、格式、发行版之介绍</a>](<a href="https://www.latexstudio.net/archives/51537.html" rel="nofollow">https://www.latexstudio.net/archives/51537.html</a>)<br>
+[<a href="https://zhuanlan.zhihu.com/p/166523064" rel="nofollow">Visual Studio Code (vscode) 配置 LaTeX</a>](<a href="https://zhuanlan.zhihu.com/p/166523064" rel="nofollow">https://zhuanlan.zhihu.com/p/166523064</a>)</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://Guo233333333.github.io/patrickguo.github.io">Patrick's Blog</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Guo233333333/patrickguo.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
