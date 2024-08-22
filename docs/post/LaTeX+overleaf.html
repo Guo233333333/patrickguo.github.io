@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="> 本文由 [[简悦 SimpRead](http://ksria.com/simpread/)](http://ksria.com/simpread/) 转码， 原文地址 [[blog.csdn.net](https://blog.csdn.net/Ray_yep/article/details/140066059)](https://blog.csdn.net/Ray_yep/article/details/140066059)
+
+介绍
+
+[[overleaf](https://so.csdn.net/so/search?q=overleaf&spm=1001.2101.3001.7020)](https://so.csdn.net/so/search?q=overleaf&spm=1001.2101.3001.7020) 已经成了大家编写 LaTeX 的利器，但也有一部分朋友习惯用 vscode 编写 LaTeX，因为 vscode 里面的 copilot 真的非常好用，那有没有办法把二者结合起来？[vscode](https://so.csdn.net/so/search?q=vscode&spm=1001.2101.3001.7020) 里面的插件 **Overleaf Workshop** 就非常好用。">
+<meta property="og:title" content="LaTeX+overleaf">
+<meta property="og:description" content="> 本文由 [[简悦 SimpRead](http://ksria.com/simpread/)](http://ksria.com/simpread/) 转码， 原文地址 [[blog.csdn.net](https://blog.csdn.net/Ray_yep/article/details/140066059)](https://blog.csdn.net/Ray_yep/article/details/140066059)
+
+介绍
+
+[[overleaf](https://so.csdn.net/so/search?q=overleaf&spm=1001.2101.3001.7020)](https://so.csdn.net/so/search?q=overleaf&spm=1001.2101.3001.7020) 已经成了大家编写 LaTeX 的利器，但也有一部分朋友习惯用 vscode 编写 LaTeX，因为 vscode 里面的 copilot 真的非常好用，那有没有办法把二者结合起来？[vscode](https://so.csdn.net/so/search?q=vscode&spm=1001.2101.3001.7020) 里面的插件 **Overleaf Workshop** 就非常好用。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://Guo233333333.github.io/patrickguo.github.io/post/LaTeX%2Boverleaf.html">
+<meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
+<title>LaTeX+overleaf</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">LaTeX+overleaf</h1>
+<div class="title-right">
+    <a href="https://Guo233333333.github.io/patrickguo.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Guo233333333/patrickguo.github.io/issues/11" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><blockquote>
+<p>本文由 [<a href="http://ksria.com/simpread/" rel="nofollow">简悦 SimpRead</a>](<a href="http://ksria.com/simpread/" rel="nofollow">http://ksria.com/simpread/</a>) 转码， 原文地址 [<a href="https://blog.csdn.net/Ray_yep/article/details/140066059" rel="nofollow">blog.csdn.net</a>](<a href="https://blog.csdn.net/Ray_yep/article/details/140066059" rel="nofollow">https://blog.csdn.net/Ray_yep/article/details/140066059</a>)</p>
+</blockquote>
+<p>介绍</p>
+<p>[<a href="https://so.csdn.net/so/search?q=overleaf&amp;spm=1001.2101.3001.7020" rel="nofollow">overleaf</a>](<a href="https://so.csdn.net/so/search?q=overleaf&amp;spm=1001.2101.3001.7020" rel="nofollow">https://so.csdn.net/so/search?q=overleaf&amp;spm=1001.2101.3001.7020</a>) 已经成了大家编写 LaTeX 的利器，但也有一部分朋友习惯用 vscode 编写 LaTeX，因为 vscode 里面的 copilot 真的非常好用，那有没有办法把二者结合起来？<a href="https://so.csdn.net/so/search?q=vscode&amp;spm=1001.2101.3001.7020" rel="nofollow">vscode</a> 里面的插件 <strong>Overleaf Workshop</strong> 就非常好用。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3eba0c9aa5172f36e172edbfb8345b4b72ff5d97cd080b3f47541bb1a8232bad/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f35643934626465363261313234616461383832383762306664636435396435342e706e67"><img src="https://camo.githubusercontent.com/3eba0c9aa5172f36e172edbfb8345b4b72ff5d97cd080b3f47541bb1a8232bad/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f35643934626465363261313234616461383832383762306664636435396435342e706e67" alt="" data-canonical-src="https://img-blog.csdnimg.cn/direct/5d94bde62a124ada88287b0fdcd59d54.png" style="max-width: 100%;"></a></p>
+<p>配置流程</p>
+<p>如何创建 overleaf 和在 <a href="https://so.csdn.net/so/search?q=vscode&amp;spm=1001.2101.3001.7020" rel="nofollow">vscode</a> 里面配置 LaTeX 这里就不说了，只说怎么把二者联动起来。</p>
+<h3>安装插件 Overleaf Workshop</h3>
+<ol>
+<li>
+<p>打开扩展：商店，如 <strong>1</strong></p>
+</li>
+<li>
+<p>在扩展：商店 中搜索 Overleaf Workshop，然后下载，如 <strong>2</strong></p>
+</li>
+<li>
+<p>下载完成后会有 overleaf 的表示出现，如 <strong>3</strong></p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/54112cc417f3b94c05ef2a318a92850a6ce16f00ec61168afbae7e88408c08d7/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f36623465643439306636303634653433393462373832306137636436313130352e706e67"><img src="https://camo.githubusercontent.com/54112cc417f3b94c05ef2a318a92850a6ce16f00ec61168afbae7e88408c08d7/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f36623465643439306636303634653433393462373832306137636436313130352e706e67" alt="" data-canonical-src="https://img-blog.csdnimg.cn/direct/6b4ed490f6064e4394b7820a7cd61105.png" style="max-width: 100%;"></a></p>
+<h3>配置</h3>
+<ol>
+<li>
+<p>打开 overleaf 图标，如 <strong>1</strong></p>
+</li>
+<li>
+<p>点击左上角 <strong>+</strong> 号，进行配置，如 <strong>2</strong></p>
+</li>
+<li>
+<p>输入 overleaf 的网址 <a href="https://www.overleaf.com/" rel="nofollow">https://www.overleaf.com/</a> 如 <strong>3</strong> ，然后 回车</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b46b7961aa69a8e6bae4ffd7b3c0d90e25f35c6c451b36a6dbe0d5027f7c3e8b/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f38363863343433393930353134373864616634343236333734343333663237382e706e67"><img src="https://camo.githubusercontent.com/b46b7961aa69a8e6bae4ffd7b3c0d90e25f35c6c451b36a6dbe0d5027f7c3e8b/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f38363863343433393930353134373864616634343236333734343333663237382e706e67" alt="" data-canonical-src="https://img-blog.csdnimg.cn/direct/868c44399051478daf4426374433f278.png" style="max-width: 100%;"></a></p>
+<ol start="4">
+<li>
+<p>出现 overleaf 的网址后点击右上角登入，如 <strong>4</strong></p>
+</li>
+<li>
+<p>点击 "<strong>Login with Cookies</strong>"，如 <strong>5</strong></p>
+</li>
+</ol>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/de9605d2e2e9fa554c542432f5f8f80f983358b8871fa7db1c946fc2ebba0058/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f65383061306634653563656534613765386239643965323238356264303830612e706e67"><img src="https://camo.githubusercontent.com/de9605d2e2e9fa554c542432f5f8f80f983358b8871fa7db1c946fc2ebba0058/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f65383061306634653563656534613765386239643965323238356264303830612e706e67" alt="" data-canonical-src="https://img-blog.csdnimg.cn/direct/e80a0f4e5cee4a7e8b9d9e2285bd080a.png" style="max-width: 100%;"></a></p>
+<ol start="6">
+<li>在输入框中输入 Cookies 即可，获取 Cookies 的方式见下节。完成后就能联动成功了！</li>
+</ol>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/11d51fcc94d3683a5e2a4c7e6d626b70ba19f21eca02b24b4e9ebe1795cdf0b2/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f61633065616361653234383834356430626430383232356265313238626361332e706e67"><img src="https://camo.githubusercontent.com/11d51fcc94d3683a5e2a4c7e6d626b70ba19f21eca02b24b4e9ebe1795cdf0b2/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f61633065616361653234383834356430626430383232356265313238626361332e706e67" alt="" data-canonical-src="https://img-blog.csdnimg.cn/direct/ac0eacae248845d0bd08225be128bca3.png" style="max-width: 100%;"></a></p>
+<h3>Cookies 获取</h3>
+<p> 1. 登入 overleaf 后进入首页</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/36c8e305ad98a494491f63516ca22a37b25d1bc8a974aa76ddc05a20fd7827aa/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f66666532323936333736653134313065383930316432323937636166653566352e706e67"><img src="https://camo.githubusercontent.com/36c8e305ad98a494491f63516ca22a37b25d1bc8a974aa76ddc05a20fd7827aa/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f66666532323936333736653134313065383930316432323937636166653566352e706e67" alt="" data-canonical-src="https://img-blog.csdnimg.cn/direct/ffe2296376e1410e8901d2297cafe5f5.png" style="max-width: 100%;"></a></p>
+<ol start="2">
+<li>在 overleaf 首页中进入<strong>开发人员工具</strong>，例如 Edge 浏览器中为 <strong>右上角 ··· → 更多工具 → 开发人员工具</strong></li>
+</ol>
+<p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/fc16f535dc24c76a9c90fce03bcb9af9ba75656133ec4b57c04a8079180dbda8/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f62343833366139366361376234633837386434326131393563656137656163622e706e67"><img src="https://camo.githubusercontent.com/fc16f535dc24c76a9c90fce03bcb9af9ba75656133ec4b57c04a8079180dbda8/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f62343833366139366361376234633837386434326131393563656137656163622e706e67" alt="" data-canonical-src="https://img-blog.csdnimg.cn/direct/b4836a96ca7b4c878d42a195cea7eacb.png" style="max-width: 100%;"></a></p>
+<ol start="3">
+<li>进入后 点击 <strong>网络 ,</strong> 一两秒后进行刷新（<strong>Ctrl + R</strong>）</li>
+</ol>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/17be62e01bc53963c6519ddf439e60895cc4b669c26b6e9db92607899dbc5b26/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f39636639653062383431343534666332393261323730653232303731353266382e706e67"><img src="https://camo.githubusercontent.com/17be62e01bc53963c6519ddf439e60895cc4b669c26b6e9db92607899dbc5b26/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f39636639653062383431343534666332393261323730653232303731353266382e706e67" alt="" data-canonical-src="https://img-blog.csdnimg.cn/direct/9cf9e0b841454fc292a270e2207152f8.png" style="max-width: 100%;"></a></p>
+<ol start="4">
+<li>左上角查询 <strong>project</strong> ，然后点击 project</li>
+</ol>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d70a3d0ef7bef84ebac71e973932a42964905fb40f63b46200ba4037208661a5/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f35623864656438633435643334333234383532336466633237316338663065342e706e67"><img src="https://camo.githubusercontent.com/d70a3d0ef7bef84ebac71e973932a42964905fb40f63b46200ba4037208661a5/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f6469726563742f35623864656438633435643334333234383532336466633237316338663065342e706e67" alt="" data-canonical-src="https://img-blog.csdnimg.cn/direct/5b8ded8c45d343248523dfc271c8f0e4.png" style="max-width: 100%;"></a></p>
+<ol start="5">
+<li>找到 <strong>Cookie</strong>，并且 **仅复制 over_session2 开头的一段，**这就是我们需要的 Cookie</li>
+</ol></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://Guo233333333.github.io/patrickguo.github.io">Patrick's Blog</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Guo233333333/patrickguo.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+
+
+</html>
